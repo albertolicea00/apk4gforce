@@ -22,5 +22,11 @@
     <string name="compat_hint">This opens Android\'s hidden testing menu, where you\'ll find the same network type option.</string>
 
     <string name="open_menu">Open Android radio menu</string>
+    <string name="info_version">Version %s</string>
+    <string name="info_developer">Developed by @albertolicea00</string>
+    <string name="info_disclaimer">This app does not modify your phone\'s settings. It only opens the native Android menu. The developer is not responsible for any issues caused by manually changing the device\'s network configuration.</string>
+    <string name="info_docs">Network Documentation</string>
+    <string name="info_repo">GitHub Repository</string>
+    <string name="info_privacy">Privacy Policy</string>
     <string name="unavailable">This phone does not allow opening the radio menu.</string>
 </resources>

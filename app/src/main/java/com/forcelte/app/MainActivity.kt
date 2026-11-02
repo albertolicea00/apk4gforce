@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        findViewById<TextView>(R.id.btn_info).setOnClickListener {
+            startActivity(Intent(this, InfoActivity::class.java))
+        }
+
         findViewById<MaterialButton>(R.id.txt_dial_code).setOnClickListener {
             try {
                 startActivity(

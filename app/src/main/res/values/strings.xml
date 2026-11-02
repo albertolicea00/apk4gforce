@@ -22,5 +22,11 @@
     <string name="compat_hint">Esto abre el menú oculto de pruebas de Android, donde encontrarás la misma opción de tipo de red.</string>
 
     <string name="open_menu">Abrir menú de radio de Android</string>
+    <string name="info_version">Versión %s</string>
+    <string name="info_developer">Desarrollado por @albertolicea00</string>
+    <string name="info_disclaimer">Esta app no modifica la configuración del teléfono. Solo abre el menú nativo de Android. El desarrollador no se hace responsable de problemas derivados de cambios realizados manualmente en la configuración de red del dispositivo.</string>
+    <string name="info_docs">Documentación de red</string>
+    <string name="info_repo">Repositorio en GitHub</string>
+    <string name="info_privacy">Política de privacidad</string>
     <string name="unavailable">Este teléfono no permite abrir el menú de radio.</string>
 </resources>
