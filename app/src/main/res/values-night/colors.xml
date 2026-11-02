@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark mode — blue accent from icon gradient -->
+    <color name="primary">#3590ff</color>
+    <color name="on_primary">#0d2b6b</color>
+    <color name="background">#0a0f1a</color>
+    <color name="surface">#121a2e</color>
+    <color name="text_primary">#E0E4EE</color>
+    <color name="text_secondary">#8090B0</color>
+    <color name="warning_bg">#121a2e</color>
+    <color name="warning_text">#70A0D0</color>
+    <color name="outline">#253050</color>
+    <color name="status_bar">#0a0f1a</color>
+</resources>
