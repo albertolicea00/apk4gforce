@@ -8,6 +8,7 @@
     <color name="text_primary">#1A1A1A</color>
     <color name="text_secondary">#5A6070</color>
     <color name="warning_bg">#FFF3E0</color>
+    <color name="warning_title">#1A1A1A</color>
     <color name="warning_text">#7A4100</color>
     <color name="outline">#C8D4E8</color>
     <color name="status_bar">#0d2b6b</color>
