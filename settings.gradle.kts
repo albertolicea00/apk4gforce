@@ -12,5 +12,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Force4G"
+rootProject.name = "4G a Cojone"
 include(":app")
