@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.forcelte.app"
+    namespace = "com.albertolicea00.force4g"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.forcelte.app"
+        applicationId = "com.albertolicea00.force4g"
         minSdk = 16
         targetSdk = 34
         versionCode = 1

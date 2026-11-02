@@ -1,4 +1,4 @@
-package com.forcelte.app
+package com.albertolicea00.force4g
 
 import android.content.Intent
 import android.net.Uri
