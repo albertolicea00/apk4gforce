@@ -12,6 +12,8 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
+        findViewById<android.view.View>(R.id.btn_back).setOnClickListener { finish() }
+
         val info = packageManager.getPackageInfo(packageName, 0)
         findViewById<TextView>(R.id.txt_version).text =
             getString(R.string.info_version, info.versionName)

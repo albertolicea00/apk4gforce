@@ -21,6 +21,7 @@
     <string name="dial_code">*#*#4636#*#*</string>
     <string name="compat_hint">This opens Android\'s hidden testing menu, where you\'ll find the same network type option.</string>
 
+    <string name="back">Go back</string>
     <string name="open_menu">Open Android radio menu</string>
     <string name="info_version">Version %s</string>
     <string name="info_developer">Developed by @albertolicea00</string>

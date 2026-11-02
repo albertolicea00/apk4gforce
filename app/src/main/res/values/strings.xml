@@ -21,6 +21,7 @@
     <string name="dial_code">*#*#4636#*#*</string>
     <string name="compat_hint">Esto abre el menú oculto de pruebas de Android, donde encontrarás la misma opción de tipo de red.</string>
 
+    <string name="back">Volver</string>
     <string name="open_menu">Abrir menú de radio de Android</string>
     <string name="info_version">Versión %s</string>
     <string name="info_developer">Desarrollado por @albertolicea00</string>
