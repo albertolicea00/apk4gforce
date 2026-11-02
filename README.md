@@ -1,18 +1,22 @@
 # 4GForce
 
-App Android ultraligera que abre el menú oculto de radio de Android para forzar el modo **Solo LTE (4G)** manualmente.
+Lightweight Android app that opens Android's hidden radio menu to manually force **LTE Only (4G)** mode.
 
-## Qué hace
+## What it does
 
-Un solo botón abre `RadioInfo`, la pantalla nativa de Android donde puedes cambiar el tipo de red preferida a **LTE Only**. La app no modifica la configuración del teléfono — solo te lleva al menú correcto.
+Three buttons:
 
-## Advertencia
+1. **Open Android radio menu** — opens `RadioInfo`, the native screen where you can change the preferred network type to **LTE Only**. The app does not modify phone settings — it just takes you to the right menu.
+2. **Show IMEI (*#06#)** — opens the dialer with the IMEI code.
+3. **Open testing menu (*#\*#4636#\*#\*)** — opens the dialer with the hidden testing menu code.
 
-Al seleccionar Solo LTE, el teléfono **no podrá hacer ni recibir llamadas ni SMS**. Anota el tipo de red original antes de cambiarlo para poder restaurarlo después.
+## Warning
 
-## Idiomas
+Selecting LTE Only means your phone **cannot make or receive calls or SMS**. Note your original network type before changing it so you can restore it later.
 
-- Español (por defecto)
+## Languages
+
+- Spanish (default)
 - English
 
 ## Build
@@ -21,7 +25,7 @@ Al seleccionar Solo LTE, el teléfono **no podrá hacer ni recibir llamadas ni S
 ./gradlew assembleDebug
 ```
 
-APK en `app/build/outputs/apk/debug/app-debug.apk`.
+APK at `app/build/outputs/apk/debug/app-debug.apk`.
 
 ### Release
 
@@ -29,14 +33,15 @@ APK en `app/build/outputs/apk/debug/app-debug.apk`.
 ./gradlew assembleRelease
 ```
 
-Necesita signing config en `app/build.gradle.kts` o firma manual con `apksigner`.
+Requires signing config in `app/build.gradle.kts` or manual signing with `apksigner`.
 
-## Requisitos
+## Requirements
 
-- Android Studio o JDK 17+
+- Android Studio or JDK 17+
 - Android SDK 35 (compileSdk)
 - minSdk 21 (Android 5.0+)
+- Zero permissions required
 
-## Compatibilidad
+## Compatibility
 
-No todos los teléfonos permiten abrir el menú de radio. Algunos fabricantes bloquean el acceso. Si no funciona, la app muestra un mensaje indicándolo.
+Not all phones allow opening the radio menu. Some manufacturers block access. If it doesn't work, the app shows a message indicating so.
