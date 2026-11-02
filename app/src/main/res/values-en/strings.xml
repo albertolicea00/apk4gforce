@@ -11,7 +11,7 @@
     <string name="step_3"><b>3.</b>  Select <b>\"LTE Only\"</b>.</string>
     <string name="step_4"><b>4.</b>  Done. Your phone will now only use the 4G network.</string>
 
-    <string name="section_warning">Before you change</string>
+    <string name="section_warning">⚠️ Before you change</string>
     <string name="warning_calls"><b>No calls or SMS.</b> With LTE Only enabled, your phone <b>cannot make or receive calls or text messages</b>. Calls use 2G/3G on most phones.</string>
     <string name="warning_note">Write down your current network type before changing it. It usually appears as <i>\"LTE/TD-SCDMA/UMTS\"</i> or <i>\"LTE/TD-SCDMA/WCDMA\"</i>. You\'ll need it to go back to normal.</string>
     <string name="warning_restore">To restore, go back to this menu and select the original network type you wrote down.</string>

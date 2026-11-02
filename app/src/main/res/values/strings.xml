@@ -11,7 +11,7 @@
     <string name="step_3"><b>3.</b>  Selecciona <b>\"LTE Only\"</b> (Solo LTE).</string>
     <string name="step_4"><b>4.</b>  Listo. Tu teléfono ahora solo usará la red 4G.</string>
 
-    <string name="section_warning">Antes de cambiar</string>
+    <string name="section_warning">⚠️ Antes de cambiar</string>
     <string name="warning_calls"><b>Sin llamadas ni SMS.</b> Al activar Solo LTE, tu teléfono <b>no podrá hacer ni recibir llamadas ni mensajes de texto</b>. Las llamadas usan 2G/3G en la mayoría de los teléfonos.</string>
     <string name="warning_note">Anota el tipo de red actual antes de cambiarlo. Suele aparecer como <i>\"LTE/TD-SCDMA/UMTS\"</i> o <i>\"LTE/TD-SCDMA/WCDMA\"</i>. Lo necesitarás para volver a la normalidad.</string>
     <string name="warning_restore">Para restaurar, vuelve a este menú y selecciona el tipo de red original que anotaste.</string>
