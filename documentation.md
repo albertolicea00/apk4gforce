@@ -1,635 +1,635 @@
-# Documentación de Red Móvil — 4GForce
+# Mobile Network Documentation — 4GForce
 
-Esta documentación cubre todo lo que necesitas saber sobre las redes móviles, las bandas de frecuencia, el forzado de 4G y el funcionamiento interno de la selección de red en Android. Está dirigida tanto a usuarios generales como a técnicos.
+This documentation covers everything you need to know about mobile networks, frequency bands, forcing 4G, and the inner workings of network selection on Android. It is intended for both general users and technicians.
 
 ---
 
-## Tabla de contenidos
+## Table of Contents
 
-1. [Generaciones de red móvil](#1-generaciones-de-red-móvil)
-2. [Bandas de frecuencia](#2-bandas-de-frecuencia)
-3. [Tipo de red preferida en Android](#3-tipo-de-red-preferida-en-android)
-4. [¿Qué es forzar 4G?](#4-qué-es-forzar-4g)
+1. [Mobile Network Generations](#1-mobile-network-generations)
+2. [Frequency Bands](#2-frequency-bands)
+3. [Preferred Network Type on Android](#3-preferred-network-type-on-android)
+4. [What Is Forcing 4G?](#4-what-is-forcing-4g)
 5. [VoLTE (Voice over LTE)](#5-volte-voice-over-lte)
-6. [RadioInfo y el menú de ingeniería](#6-radioinfo-y-el-menú-de-ingeniería)
-7. [Cómo funciona internamente](#7-cómo-funciona-internamente)
-8. [Casos de uso comunes](#8-casos-de-uso-comunes)
-9. [Riesgos y precauciones](#9-riesgos-y-precauciones)
-10. [Preguntas frecuentes](#10-preguntas-frecuentes)
+6. [RadioInfo and the Engineering Menu](#6-radioinfo-and-the-engineering-menu)
+7. [How It Works Internally](#7-how-it-works-internally)
+8. [Common Use Cases](#8-common-use-cases)
+9. [Risks and Precautions](#9-risks-and-precautions)
+10. [Frequently Asked Questions](#10-frequently-asked-questions)
 
 ---
 
-## 1. Generaciones de red móvil
+## 1. Mobile Network Generations
 
-Las redes móviles han evolucionado a lo largo de varias "generaciones", cada una con mejoras significativas en velocidad, capacidad y funcionalidad.
+Mobile networks have evolved through several "generations," each bringing significant improvements in speed, capacity, and functionality.
 
-### 1G — Primera generación (años 80)
+### 1G — First Generation (1980s)
 
-La primera generación fue completamente analógica. Solo soportaba llamadas de voz con calidad limitada y sin cifrado. Sistemas como AMPS (Advanced Mobile Phone System) en Estados Unidos y NMT (Nordic Mobile Telephone) en Europa fueron los representantes principales. Ya no está en uso en ningún lugar del mundo.
+The first generation was entirely analog. It only supported voice calls with limited quality and no encryption. Systems like AMPS (Advanced Mobile Phone System) in the United States and NMT (Nordic Mobile Telephone) in Europe were the main representatives. It is no longer in use anywhere in the world.
 
-### 2G — Segunda generación (años 90)
+### 2G — Second Generation (1990s)
 
-La segunda generación introdujo la comunicación digital, lo que significó mejor calidad de voz, cifrado básico y la capacidad de enviar mensajes de texto (SMS).
+The second generation introduced digital communication, which meant better voice quality, basic encryption, and the ability to send text messages (SMS).
 
-- **GSM (Global System for Mobile Communications):** El estándar 2G más extendido globalmente. Opera en bandas de 850, 900, 1800 y 1900 MHz. Velocidad de datos: hasta 14.4 kbps.
-- **GPRS (General Packet Radio Service):** Una extensión de GSM que introdujo la transmisión de datos por paquetes. Velocidades teóricas de hasta 114 kbps, aunque en la práctica raramente superaba los 40 kbps. A veces llamado "2.5G".
-- **EDGE (Enhanced Data rates for GSM Evolution):** Una mejora sobre GPRS que alcanza velocidades teóricas de hasta 384 kbps (en la práctica, 100-200 kbps). Conocido como "2.75G". Es la tecnología 2G más rápida.
+- **GSM (Global System for Mobile Communications):** The most widely deployed 2G standard globally. It operates on the 850, 900, 1800, and 1900 MHz bands. Data speed: up to 14.4 kbps.
+- **GPRS (General Packet Radio Service):** An extension of GSM that introduced packet-switched data transmission. Theoretical speeds of up to 114 kbps, though in practice it rarely exceeded 40 kbps. Sometimes called "2.5G."
+- **EDGE (Enhanced Data rates for GSM Evolution):** An improvement over GPRS reaching theoretical speeds of up to 384 kbps (in practice, 100–200 kbps). Known as "2.75G." It is the fastest 2G technology.
 
-**Estado actual:** Muchos operadores están apagando sus redes 2G. Sin embargo, en algunos países en desarrollo y en áreas rurales, 2G sigue siendo la única cobertura disponible. Algunos dispositivos IoT simples (medidores, rastreadores GPS básicos) aún dependen de 2G por su bajo consumo energético y amplia cobertura.
+**Current status:** Many operators are shutting down their 2G networks. However, in some developing countries and rural areas, 2G remains the only available coverage. Some simple IoT devices (meters, basic GPS trackers) still rely on 2G due to its low power consumption and wide coverage.
 
-### 3G — Tercera generación (años 2000)
+### 3G — Third Generation (2000s)
 
-La tercera generación trajo velocidades de datos significativamente mayores, permitiendo navegación web, videollamadas y streaming básico.
+The third generation brought significantly higher data speeds, enabling web browsing, video calls, and basic streaming.
 
-- **UMTS (Universal Mobile Telecommunications System):** El estándar 3G basado en la tecnología de acceso WCDMA (Wideband Code Division Multiple Access). Velocidades de hasta 384 kbps en las primeras implementaciones.
-- **HSPA (High Speed Packet Access):** Una evolución de UMTS que incluye:
-  - **HSDPA (High Speed Downlink Packet Access):** Velocidades de descarga de hasta 14.4 Mbps teóricos.
-  - **HSUPA (High Speed Uplink Packet Access):** Velocidades de subida de hasta 5.76 Mbps teóricos.
-- **HSPA+ (Evolved HSPA):** La versión mejorada que alcanza hasta 42 Mbps de descarga y 11.5 Mbps de subida en teoría. En la práctica, velocidades de 5-15 Mbps de descarga eran comunes. Algunos operadores lo comercializaron como "4G" aunque técnicamente no lo es.
-- **TD-SCDMA (Time Division Synchronous Code Division Multiple Access):** Un estándar 3G desarrollado en China, utilizado principalmente por China Mobile. Menos extendido globalmente.
+- **UMTS (Universal Mobile Telecommunications System):** The 3G standard based on WCDMA (Wideband Code Division Multiple Access) access technology. Speeds of up to 384 kbps in early deployments.
+- **HSPA (High Speed Packet Access):** An evolution of UMTS that includes:
+  - **HSDPA (High Speed Downlink Packet Access):** Download speeds of up to 14.4 Mbps theoretical.
+  - **HSUPA (High Speed Uplink Packet Access):** Upload speeds of up to 5.76 Mbps theoretical.
+- **HSPA+ (Evolved HSPA):** The enhanced version reaching up to 42 Mbps download and 11.5 Mbps upload in theory. In practice, download speeds of 5–15 Mbps were common. Some operators marketed it as "4G" even though it technically is not.
+- **TD-SCDMA (Time Division Synchronous Code Division Multiple Access):** A 3G standard developed in China, used mainly by China Mobile. Less widespread globally.
 
-**Estado actual:** Al igual que 2G, las redes 3G están siendo progresivamente apagadas en muchos países. Estados Unidos ya ha desconectado la mayoría de sus redes 3G. En Europa y Asia, el proceso está en curso.
+**Current status:** Like 2G, 3G networks are being progressively shut down in many countries. The United States has already disconnected most of its 3G networks. In Europe and Asia, the process is underway.
 
-### 4G — Cuarta generación (años 2010)
+### 4G — Fourth Generation (2010s)
 
-La cuarta generación representó un salto cualitativo en velocidad y latencia, diseñada desde el inicio para datos en lugar de voz.
+The fourth generation represented a qualitative leap in speed and latency, designed from the ground up for data rather than voice.
 
-- **LTE (Long Term Evolution):** El estándar 4G más extendido. Técnicamente, las primeras versiones de LTE no cumplían los requisitos de la ITU para ser llamadas "4G" (que exigía 100 Mbps en movimiento y 1 Gbps estacionario), pero la ITU permitió el uso comercial del término.
-  - Velocidades teóricas: hasta 150 Mbps de descarga y 50 Mbps de subida (categoría 4).
-  - Velocidades reales: típicamente 10-50 Mbps de descarga.
-  - Latencia: 30-50 ms (significativamente mejor que 3G).
-- **LTE-Advanced (LTE-A):** La verdadera 4G según los estándares de la ITU.
-  - Introduce la agregación de portadoras (Carrier Aggregation), que combina múltiples bandas de frecuencia simultáneamente.
-  - Velocidades teóricas: hasta 1 Gbps de descarga (categoría 16) y 500 Mbps de subida.
-  - Velocidades reales: 50-300 Mbps de descarga, dependiendo del operador y las condiciones.
-  - MIMO avanzado (4x4 MIMO): utiliza múltiples antenas para aumentar el rendimiento.
-- **LTE-Advanced Pro:** Una evolución que introduce tecnologías como MIMO masivo (hasta 64 antenas), LAA (Licensed Assisted Access) que usa espectro no licenciado (5 GHz), y velocidades teóricas de hasta 3 Gbps.
+- **LTE (Long Term Evolution):** The most widely deployed 4G standard. Technically, early versions of LTE did not meet the ITU requirements to be called "4G" (which demanded 100 Mbps while mobile and 1 Gbps while stationary), but the ITU allowed the commercial use of the term.
+  - Theoretical speeds: up to 150 Mbps download and 50 Mbps upload (Category 4).
+  - Real-world speeds: typically 10–50 Mbps download.
+  - Latency: 30–50 ms (significantly better than 3G).
+- **LTE-Advanced (LTE-A):** True 4G by ITU standards.
+  - Introduces Carrier Aggregation, which combines multiple frequency bands simultaneously.
+  - Theoretical speeds: up to 1 Gbps download (Category 16) and 500 Mbps upload.
+  - Real-world speeds: 50–300 Mbps download, depending on the operator and conditions.
+  - Advanced MIMO (4×4 MIMO): uses multiple antennas to increase throughput.
+- **LTE-Advanced Pro:** An evolution introducing technologies such as Massive MIMO (up to 64 antennas), LAA (Licensed Assisted Access) using unlicensed spectrum (5 GHz), and theoretical speeds of up to 3 Gbps.
 
-**Categorías de dispositivos LTE:**
+**LTE Device Categories:**
 
-| Categoría | Descarga máxima | Subida máxima | Notas |
-|-----------|----------------|---------------|-------|
-| Cat 1 | 10 Mbps | 5 Mbps | IoT básico |
-| Cat 3 | 100 Mbps | 50 Mbps | Smartphones antiguos |
-| Cat 4 | 150 Mbps | 50 Mbps | Smartphones comunes |
-| Cat 6 | 300 Mbps | 50 Mbps | Con agregación de portadoras |
-| Cat 9 | 450 Mbps | 50 Mbps | Gama alta |
-| Cat 12 | 600 Mbps | 100 Mbps | Gama alta reciente |
+| Category | Max Download | Max Upload | Notes |
+|----------|-------------|------------|-------|
+| Cat 1 | 10 Mbps | 5 Mbps | Basic IoT |
+| Cat 3 | 100 Mbps | 50 Mbps | Older smartphones |
+| Cat 4 | 150 Mbps | 50 Mbps | Common smartphones |
+| Cat 6 | 300 Mbps | 50 Mbps | With carrier aggregation |
+| Cat 9 | 450 Mbps | 50 Mbps | High-end |
+| Cat 12 | 600 Mbps | 100 Mbps | Recent high-end |
 | Cat 16 | 1 Gbps | 150 Mbps | LTE-Advanced |
 | Cat 18 | 1.2 Gbps | 200 Mbps | LTE-Advanced Pro |
 
-### 5G — Quinta generación (años 2020)
+### 5G — Fifth Generation (2020s)
 
-La quinta generación ofrece velocidades masivas, latencia ultra-baja y capacidad para conectar millones de dispositivos simultáneamente.
+The fifth generation offers massive speeds, ultra-low latency, and the capacity to connect millions of devices simultaneously.
 
-- **5G NR (New Radio):** El estándar de radio para 5G.
-  - **Sub-6 GHz:** Utiliza frecuencias por debajo de 6 GHz (principalmente 3.5 GHz). Ofrece un buen equilibrio entre velocidad y cobertura. Velocidades típicas: 100-900 Mbps.
-  - **mmWave (ondas milimétricas):** Utiliza frecuencias de 24-100 GHz. Velocidades extremas (hasta 10 Gbps teóricos, 1-4 Gbps reales) pero alcance muy limitado (pocos cientos de metros) y mala penetración en edificios.
-- **5G NSA (Non-Standalone):** La primera implementación de 5G, que usa la infraestructura 4G existente como ancla. El teléfono se conecta simultáneamente a 4G y 5G.
-- **5G SA (Standalone):** 5G puro, sin dependencia de 4G. Ofrece las ventajas completas de 5G, incluyendo network slicing y latencia ultra-baja (1 ms).
+- **5G NR (New Radio):** The radio standard for 5G.
+  - **Sub-6 GHz:** Uses frequencies below 6 GHz (mainly 3.5 GHz). Offers a good balance between speed and coverage. Typical speeds: 100–900 Mbps.
+  - **mmWave (millimeter wave):** Uses frequencies from 24–100 GHz. Extreme speeds (up to 10 Gbps theoretical, 1–4 Gbps real-world) but very limited range (a few hundred meters) and poor building penetration.
+- **5G NSA (Non-Standalone):** The first 5G deployment, which uses existing 4G infrastructure as an anchor. The phone connects simultaneously to 4G and 5G.
+- **5G SA (Standalone):** Pure 5G, without 4G dependency. Offers the full advantages of 5G, including network slicing and ultra-low latency (1 ms).
 
-**Nota:** 4GForce se enfoca en LTE porque sigue siendo la red de datos más desplegada y confiable a nivel mundial. Incluso en áreas con 5G, la cobertura LTE suele ser más consistente.
+**Note:** 4GForce focuses on LTE because it remains the most widely deployed and reliable data network globally. Even in areas with 5G, LTE coverage tends to be more consistent.
 
 ---
 
-## 2. Bandas de frecuencia
+## 2. Frequency Bands
 
-### ¿Qué es una banda de frecuencia?
+### What Is a Frequency Band?
 
-Una banda de frecuencia es un rango específico del espectro electromagnético asignado para comunicaciones móviles. Cada operador tiene licencias para usar ciertas bandas en ciertos países. Las bandas se identifican por números estandarizados por la 3GPP (el organismo que define los estándares de telecomunicaciones móviles).
+A frequency band is a specific range of the electromagnetic spectrum assigned for mobile communications. Each operator holds licenses to use certain bands in certain countries. Bands are identified by standardized numbers defined by 3GPP (the body that defines mobile telecommunications standards).
 
-### Características de las bandas
+### Band Characteristics
 
-Las bandas se dividen generalmente en dos categorías con propiedades físicas diferentes:
+Bands are generally divided into two categories with different physical properties:
 
-**Bandas bajas (por debajo de 1 GHz):**
-- Mayor alcance (las ondas viajan más lejos)
-- Mejor penetración en edificios y obstáculos
-- Menor ancho de banda disponible (velocidades más bajas)
-- Ideales para cobertura rural y en interiores
-- Ejemplos: B5 (850 MHz), B8 (900 MHz), B12/B17 (700 MHz), B20 (800 MHz), B28 (700 MHz)
+**Low bands (below 1 GHz):**
+- Greater range (waves travel farther)
+- Better penetration through buildings and obstacles
+- Less available bandwidth (lower speeds)
+- Ideal for rural and indoor coverage
+- Examples: B5 (850 MHz), B8 (900 MHz), B12/B17 (700 MHz), B20 (800 MHz), B28 (700 MHz)
 
-**Bandas altas (por encima de 1 GHz):**
-- Menor alcance
-- Peor penetración en edificios
-- Mayor ancho de banda disponible (velocidades más altas)
-- Ideales para áreas urbanas con alta densidad de usuarios
-- Ejemplos: B1 (2100 MHz), B3 (1800 MHz), B7 (2600 MHz), B41 (2500 MHz)
+**High bands (above 1 GHz):**
+- Shorter range
+- Worse building penetration
+- More available bandwidth (higher speeds)
+- Ideal for urban areas with high user density
+- Examples: B1 (2100 MHz), B3 (1800 MHz), B7 (2600 MHz), B41 (2500 MHz)
 
-### Bandas LTE más comunes a nivel mundial
+### Most Common LTE Bands Worldwide
 
 #### FDD (Frequency Division Duplex)
 
-En FDD, la subida y la bajada de datos usan frecuencias diferentes simultáneamente.
+In FDD, upload and download use different frequencies simultaneously.
 
-| Banda | Frecuencia | Regiones principales | Notas |
-|-------|-----------|---------------------|-------|
-| **B1** | 2100 MHz | Global (Europa, Asia, América Latina) | Una de las más extendidas a nivel mundial |
-| **B2** | 1900 MHz | América (EE.UU., Canadá, América Latina) | PCS, muy común en las Américas |
-| **B3** | 1800 MHz | Global (Europa, Asia, África) | La banda LTE más desplegada del mundo |
-| **B4** | 1700/2100 MHz (AWS) | América (EE.UU., Canadá, México) | T-Mobile, AT&T |
-| **B5** | 850 MHz | América, Asia-Pacífico | Banda baja con buena cobertura |
-| **B7** | 2600 MHz | Global (Europa, América Latina, Asia) | Alta capacidad urbana |
-| **B8** | 900 MHz | Europa, Asia, África | Excelente cobertura rural |
-| **B12** | 700 MHz | EE.UU. (T-Mobile) | Banda baja crítica para cobertura interior |
-| **B13** | 700 MHz | EE.UU. (Verizon) | Principal banda baja de Verizon |
-| **B17** | 700 MHz | EE.UU. | Subconjunto de B12 |
-| **B20** | 800 MHz | Europa | Banda baja principal en Europa |
-| **B25** | 1900 MHz | EE.UU. (Sprint/T-Mobile) | Extensión de B2 |
-| **B26** | 850 MHz | EE.UU., Japón | Extensión de B5 |
-| **B28** | 700 MHz | Asia-Pacífico, América Latina | APT 700, cada vez más usada |
-| **B66** | 1700/2100 MHz | EE.UU., Canadá | Extensión de B4 (AWS-3) |
-| **B71** | 600 MHz | EE.UU. (T-Mobile) | Banda ultra-baja, excelente alcance |
+| Band | Frequency | Main Regions | Notes |
+|------|-----------|-------------|-------|
+| **B1** | 2100 MHz | Global (Europe, Asia, Latin America) | One of the most widespread worldwide |
+| **B2** | 1900 MHz | Americas (USA, Canada, Latin America) | PCS, very common in the Americas |
+| **B3** | 1800 MHz | Global (Europe, Asia, Africa) | The most deployed LTE band in the world |
+| **B4** | 1700/2100 MHz (AWS) | Americas (USA, Canada, Mexico) | T-Mobile, AT&T |
+| **B5** | 850 MHz | Americas, Asia-Pacific | Low band with good coverage |
+| **B7** | 2600 MHz | Global (Europe, Latin America, Asia) | High urban capacity |
+| **B8** | 900 MHz | Europe, Asia, Africa | Excellent rural coverage |
+| **B12** | 700 MHz | USA (T-Mobile) | Critical low band for indoor coverage |
+| **B13** | 700 MHz | USA (Verizon) | Verizon's main low band |
+| **B17** | 700 MHz | USA | Subset of B12 |
+| **B20** | 800 MHz | Europe | Main low band in Europe |
+| **B25** | 1900 MHz | USA (Sprint/T-Mobile) | Extension of B2 |
+| **B26** | 850 MHz | USA, Japan | Extension of B5 |
+| **B28** | 700 MHz | Asia-Pacific, Latin America | APT 700, increasingly used |
+| **B66** | 1700/2100 MHz | USA, Canada | Extension of B4 (AWS-3) |
+| **B71** | 600 MHz | USA (T-Mobile) | Ultra-low band, excellent range |
 
 #### TDD (Time Division Duplex)
 
-En TDD, la subida y la bajada de datos comparten la misma frecuencia pero se alternan en el tiempo.
+In TDD, upload and download share the same frequency but alternate in time.
 
-| Banda | Frecuencia | Regiones principales | Notas |
-|-------|-----------|---------------------|-------|
-| **B38** | 2600 MHz | Europa, Asia | Complemento TDD de B7 |
+| Band | Frequency | Main Regions | Notes |
+|------|-----------|-------------|-------|
+| **B38** | 2600 MHz | Europe, Asia | TDD complement of B7 |
 | **B39** | 1900 MHz | China | China Mobile |
-| **B40** | 2300 MHz | Asia, India | Ampliamente usada en India |
-| **B41** | 2500 MHz | Global | Sprint, China Mobile, India. Alta capacidad |
-| **B42** | 3500 MHz | Europa | También usada para 5G NR |
-| **B43** | 3700 MHz | Europa | También usada para 5G NR |
+| **B40** | 2300 MHz | Asia, India | Widely used in India |
+| **B41** | 2500 MHz | Global | Sprint, China Mobile, India. High capacity |
+| **B42** | 3500 MHz | Europe | Also used for 5G NR |
+| **B43** | 3700 MHz | Europe | Also used for 5G NR |
 
-### Bandas por región
+### Bands by Region
 
-**Norteamérica (EE.UU. y Canadá):**
-- Principales: B2, B4, B5, B7, B12, B13, B17, B25, B26, B41, B66, B71
-- Si compras un teléfono para usar en EE.UU., asegúrate de que soporte B2, B4, B12/B13 como mínimo.
+**North America (USA and Canada):**
+- Main bands: B2, B4, B5, B7, B12, B13, B17, B25, B26, B41, B66, B71
+- If you buy a phone to use in the USA, make sure it supports B2, B4, B12/B13 at a minimum.
 
-**Europa:**
-- Principales: B1, B3, B7, B8, B20, B28, B38
-- La combinación B3 + B7 + B20 cubre la mayoría de operadores europeos.
+**Europe:**
+- Main bands: B1, B3, B7, B8, B20, B28, B38
+- The combination B3 + B7 + B20 covers most European operators.
 
-**América Latina:**
-- Principales: B1, B2, B3, B4, B5, B7, B28
-- Varía significativamente por país. B4 y B7 son comunes en México, Brasil usa mucho B7 y B28.
+**Latin America:**
+- Main bands: B1, B2, B3, B4, B5, B7, B28
+- Varies significantly by country. B4 and B7 are common in Mexico; Brazil uses B7 and B28 heavily.
 
-**Cuba y el Caribe:**
-- ETECSA (Cuba) opera principalmente en B3 (1800 MHz) y B1 (2100 MHz) para LTE.
-- En el Caribe en general: B2, B4, B7, B13 son comunes dependiendo del operador.
+**Cuba and the Caribbean:**
+- ETECSA (Cuba) primarily operates on B3 (1800 MHz) and B1 (2100 MHz) for LTE.
+- In the Caribbean generally: B2, B4, B7, B13 are common depending on the operator.
 
 **Asia:**
-- Principales: B1, B3, B5, B7, B8, B28, B38, B39, B40, B41
-- China tiene un ecosistema particular con B39, B40 y B41 (TD-LTE).
+- Main bands: B1, B3, B5, B7, B8, B28, B38, B39, B40, B41
+- China has a unique ecosystem with B39, B40, and B41 (TD-LTE).
 
-**África:**
-- Principales: B1, B3, B7, B8, B20, B28
-- B8 y B3 son las más extendidas.
+**Africa:**
+- Main bands: B1, B3, B7, B8, B20, B28
+- B8 and B3 are the most widespread.
 
-### ¿Por qué importan las bandas al comprar un teléfono?
+### Why Do Bands Matter When Buying a Phone?
 
-Un teléfono solo puede conectarse a las bandas para las que tiene hardware de radio compatible. Si compras un teléfono diseñado para el mercado asiático y lo usas en Estados Unidos, es posible que no soporte las bandas locales y tengas poca o ninguna cobertura LTE.
+A phone can only connect to bands for which it has compatible radio hardware. If you buy a phone designed for the Asian market and use it in the United States, it may not support the local bands and you could have little or no LTE coverage.
 
-**Recomendaciones:**
-- Antes de comprar un teléfono importado, verifica qué bandas LTE soporta (esta información está en las especificaciones técnicas).
-- Compara esas bandas con las que usa tu operador en tu país.
-- Los teléfonos "globales" o "desbloqueados internacionales" suelen soportar más bandas.
-
----
-
-## 3. Tipo de red preferida en Android
-
-### ¿Qué es el tipo de red preferida?
-
-El "tipo de red preferida" (Preferred Network Type) es una configuración interna de Android que le dice al módem del teléfono qué tecnologías de red puede usar y cuáles debe priorizar. Esta configuración determina a qué generación de red se conectará tu teléfono.
-
-### Modos disponibles
-
-Los modos disponibles varían según el fabricante, el modelo y el operador, pero los más comunes son:
-
-| Modo | Descripción | Comportamiento |
-|------|-------------|----------------|
-| **LTE/WCDMA/GSM (auto)** | Modo automático completo | El teléfono elige la mejor red disponible. Prioriza LTE, luego 3G, luego 2G. Es el modo predeterminado. |
-| **LTE/WCDMA** | 4G y 3G solamente | El teléfono usa LTE o 3G, pero nunca baja a 2G. |
-| **LTE Only** | Solo 4G | El teléfono **solo** se conecta a LTE. No usa 3G ni 2G bajo ninguna circunstancia. |
-| **WCDMA/GSM (auto)** | 3G y 2G solamente | El teléfono no usa LTE. Útil si LTE tiene problemas en tu zona. |
-| **WCDMA Only** | Solo 3G | Solo usa UMTS/HSPA. No usa LTE ni 2G. |
-| **GSM Only** | Solo 2G | Solo usa GSM/EDGE. Velocidades muy bajas pero máxima cobertura y ahorro de batería. |
-| **LTE/TD-SCDMA/UMTS** | 4G/3G (variante con TD-SCDMA) | Común en teléfonos vendidos en China. Incluye soporte para TD-SCDMA. |
-| **LTE/TD-SCDMA/WCDMA/GSM** | Todas las tecnologías | Modo automático que incluye TD-SCDMA. |
-
-### ¿Cómo elige el teléfono la red?
-
-En modo automático, el teléfono sigue estas reglas generales:
-
-1. **Escanea** todas las bandas y tecnologías disponibles.
-2. **Prioriza** la tecnología más alta (LTE > 3G > 2G).
-3. **Evalúa** la calidad de la señal. Si LTE tiene señal muy débil, puede bajar a 3G.
-4. **Considera** las instrucciones del operador. Las tarjetas SIM contienen configuraciones del operador que pueden influir en la selección.
-5. **Hace handover** (traspaso) entre tecnologías cuando te mueves. Por ejemplo, si sales de una zona con cobertura LTE, el teléfono baja a 3G automáticamente.
-
-### El problema del modo automático
-
-En el modo automático, el teléfono puede tomar decisiones subóptimas:
-
-- **Ping-pong entre redes:** En zonas con cobertura límite, el teléfono puede alternar constantemente entre LTE y 3G, causando desconexiones y lentitud.
-- **Bajada innecesaria a 2G/3G:** Algunos operadores configuran sus redes para que el teléfono baje a 3G durante las llamadas de voz (Circuit-Switched Fallback o CSFB), y a veces el teléfono tarda en volver a LTE.
-- **Congestión en 3G:** En áreas donde mucha gente está en 3G, la experiencia puede ser peor que si forzaras LTE, incluso con señal LTE más débil.
-
-Es por esto que forzar LTE puede mejorar significativamente la experiencia en ciertos escenarios.
+**Recommendations:**
+- Before buying an imported phone, check which LTE bands it supports (this information is in the technical specifications).
+- Compare those bands with the ones your operator uses in your country.
+- "Global" or "international unlocked" phones typically support more bands.
 
 ---
 
-## 4. ¿Qué es forzar 4G?
+## 3. Preferred Network Type on Android
 
-### Definición
+### What Is the Preferred Network Type?
 
-Forzar 4G significa configurar el teléfono para que **únicamente** se conecte a redes LTE, ignorando por completo las redes 2G y 3G. El teléfono no bajará a una tecnología inferior bajo ninguna circunstancia, ni siquiera si la señal LTE es débil.
+The "Preferred Network Type" is an internal Android setting that tells the phone's modem which network technologies it can use and which to prioritize. This setting determines which network generation your phone will connect to.
 
-### ¿Por qué forzar 4G?
+### Available Modes
 
-**1. Velocidades de datos superiores**
-LTE ofrece velocidades significativamente mayores que 3G. Si estás en una zona con cobertura LTE, forzar 4G garantiza que siempre obtendrás las mejores velocidades disponibles.
+The available modes vary by manufacturer, model, and operator, but the most common ones are:
 
-**2. Evitar la congestión de 3G**
-En muchas áreas, las redes 3G están congestionadas porque comparten capacidad con muchos usuarios. La red LTE, al tener más capacidad y ancho de banda, suele estar menos congestionada.
+| Mode | Description | Behavior |
+|------|-------------|----------|
+| **LTE/WCDMA/GSM (auto)** | Full automatic mode | The phone chooses the best available network. Prioritizes LTE, then 3G, then 2G. This is the default mode. |
+| **LTE/WCDMA** | 4G and 3G only | The phone uses LTE or 3G but never drops to 2G. |
+| **LTE Only** | 4G only | The phone **only** connects to LTE. It does not use 3G or 2G under any circumstances. |
+| **WCDMA/GSM (auto)** | 3G and 2G only | The phone does not use LTE. Useful if LTE has issues in your area. |
+| **WCDMA Only** | 3G only | Only uses UMTS/HSPA. Does not use LTE or 2G. |
+| **GSM Only** | 2G only | Only uses GSM/EDGE. Very low speeds but maximum coverage and battery savings. |
+| **LTE/TD-SCDMA/UMTS** | 4G/3G (variant with TD-SCDMA) | Common on phones sold in China. Includes TD-SCDMA support. |
+| **LTE/TD-SCDMA/WCDMA/GSM** | All technologies | Automatic mode that includes TD-SCDMA. |
 
-**3. Estabilidad de conexión**
-El cambio automático entre redes (handover) puede causar interrupciones breves. Si LTE está disponible de forma estable en tu zona, forzar 4G elimina estos cambios y proporciona una conexión más consistente.
+### How Does the Phone Choose the Network?
 
-**4. Menor latencia**
-LTE tiene una latencia típica de 30-50 ms, mientras que 3G suele tener 70-200 ms. Para juegos en línea, videollamadas y navegación web, esta diferencia es notable.
+In automatic mode, the phone follows these general rules:
 
-**5. Evitar el downgrade forzado por el operador**
-Algunos operadores configuran sus redes de forma agresiva para bajar dispositivos a 3G, especialmente durante llamadas (CSFB). Forzar LTE previene esto (aunque también previene las llamadas si no tienes VoLTE).
+1. **Scans** all available bands and technologies.
+2. **Prioritizes** the highest technology (LTE > 3G > 2G).
+3. **Evaluates** signal quality. If LTE has a very weak signal, it may drop to 3G.
+4. **Considers** operator instructions. SIM cards contain operator configurations that can influence selection.
+5. **Performs handover** between technologies as you move. For example, if you leave an area with LTE coverage, the phone automatically drops to 3G.
 
-**6. Pruebas y diagnóstico**
-Los técnicos de red y los usuarios avanzados usan el modo LTE Only para probar la cobertura y el rendimiento de la red LTE en una zona específica, sin la "interferencia" de las redes legacy.
+### The Problem with Automatic Mode
 
-### Lo que pierdes al forzar 4G
+In automatic mode, the phone can make suboptimal decisions:
 
-- **Llamadas de voz** (en la mayoría de teléfonos): Las llamadas telefónicas tradicionales usan tecnología de circuitos conmutados que solo está disponible en 2G y 3G. Sin VoLTE activado, tu teléfono no podrá hacer ni recibir llamadas.
-- **SMS** (en algunos casos): Similar a las llamadas. Sin VoLTE/VoNR, los SMS pueden no funcionar.
-- **Cobertura**: Si te mueves a una zona sin cobertura LTE, perderás la conexión por completo. En modo automático, el teléfono habría bajado a 3G o 2G.
-- **Llamadas de emergencia**: En algunos teléfonos y redes, forzar LTE Only puede impedir las llamadas de emergencia (112, 911). Aunque muchos teléfonos tienen mecanismos de seguridad que permiten llamadas de emergencia independientemente de la configuración, no es garantizado.
+- **Network ping-pong:** In areas with borderline coverage, the phone may constantly alternate between LTE and 3G, causing disconnections and slowdowns.
+- **Unnecessary downgrade to 2G/3G:** Some operators configure their networks so the phone drops to 3G during voice calls (Circuit-Switched Fallback or CSFB), and sometimes the phone is slow to return to LTE.
+- **3G congestion:** In areas where many people are on 3G, the experience can be worse than if you forced LTE, even with a weaker LTE signal.
+
+This is why forcing LTE can significantly improve the experience in certain scenarios.
+
+---
+
+## 4. What Is Forcing 4G?
+
+### Definition
+
+Forcing 4G means configuring your phone to **exclusively** connect to LTE networks, completely ignoring 2G and 3G networks. The phone will not drop to a lower technology under any circumstances, even if the LTE signal is weak.
+
+### Why Force 4G?
+
+**1. Superior data speeds**
+LTE offers significantly higher speeds than 3G. If you are in an area with LTE coverage, forcing 4G guarantees you will always get the best available speeds.
+
+**2. Avoid 3G congestion**
+In many areas, 3G networks are congested because they share capacity with many users. The LTE network, having more capacity and bandwidth, is usually less congested.
+
+**3. Connection stability**
+Automatic network switching (handover) can cause brief interruptions. If LTE is available reliably in your area, forcing 4G eliminates these switches and provides a more consistent connection.
+
+**4. Lower latency**
+LTE has a typical latency of 30–50 ms, while 3G usually has 70–200 ms. For online games, video calls, and web browsing, this difference is noticeable.
+
+**5. Avoid operator-forced downgrade**
+Some operators aggressively configure their networks to push devices to 3G, especially during calls (CSFB). Forcing LTE prevents this (although it also prevents calls if you don't have VoLTE).
+
+**6. Testing and diagnostics**
+Network technicians and advanced users use LTE Only mode to test coverage and performance of the LTE network in a specific area, without "interference" from legacy networks.
+
+### What You Lose by Forcing 4G
+
+- **Voice calls** (on most phones): Traditional phone calls use circuit-switched technology that is only available on 2G and 3G. Without VoLTE enabled, your phone will not be able to make or receive calls.
+- **SMS** (in some cases): Similar to calls. Without VoLTE/VoNR, SMS may not work.
+- **Coverage**: If you move to an area without LTE coverage, you will lose your connection entirely. In automatic mode, the phone would have dropped to 3G or 2G.
+- **Emergency calls**: On some phones and networks, forcing LTE Only may prevent emergency calls (112, 911). Although many phones have safety mechanisms that allow emergency calls regardless of configuration, this is not guaranteed.
 
 ---
 
 ## 5. VoLTE (Voice over LTE)
 
-### ¿Qué es VoLTE?
+### What Is VoLTE?
 
-VoLTE (Voz sobre LTE) es una tecnología que permite realizar llamadas de voz directamente a través de la red LTE, sin necesidad de bajar a 2G o 3G. La voz se transmite como datos IP, similar a una llamada de WhatsApp o Telegram, pero integrada a nivel de red.
+VoLTE (Voice over LTE) is a technology that allows making voice calls directly over the LTE network, without needing to drop to 2G or 3G. The voice is transmitted as IP data, similar to a WhatsApp or Telegram call, but integrated at the network level.
 
-### Ventajas de VoLTE
+### Advantages of VoLTE
 
-- **Calidad de voz superior:** VoLTE usa códecs de audio de banda ancha (AMR-WB o EVS), ofreciendo calidad de voz HD significativamente mejor que las llamadas 2G/3G.
-- **Conexión más rápida:** Las llamadas VoLTE se establecen en 1-2 segundos, comparado con 5-8 segundos en llamadas 3G (que requieren CSFB).
-- **Datos simultáneos:** Puedes navegar por internet a velocidad LTE mientras hablas por teléfono.
-- **Menor consumo de batería:** No hay cambio de red (el cambio de LTE a 3G y vuelta consume energía extra del radio).
-- **Compatibilidad con LTE Only:** Con VoLTE activado, puedes forzar LTE Only sin perder la capacidad de hacer y recibir llamadas y SMS.
+- **Superior voice quality:** VoLTE uses wideband audio codecs (AMR-WB or EVS), offering significantly better HD voice quality than 2G/3G calls.
+- **Faster connection:** VoLTE calls are established in 1–2 seconds, compared to 5–8 seconds on 3G calls (which require CSFB).
+- **Simultaneous data:** You can browse the internet at LTE speeds while talking on the phone.
+- **Lower battery consumption:** No network switching (switching from LTE to 3G and back consumes extra radio energy).
+- **LTE Only compatibility:** With VoLTE enabled, you can force LTE Only without losing the ability to make and receive calls and SMS.
 
-### ¿Cómo saber si tienes VoLTE?
+### How to Know If You Have VoLTE
 
-1. **Indicador en la barra de estado:** Cuando VoLTE está activo, muchos teléfonos muestran un ícono "VoLTE" o "HD" junto al indicador de señal.
-2. **Ajustes del teléfono:** Ve a Ajustes → Red móvil → Llamadas VoLTE (o similar). Si la opción existe y está activada, tu teléfono soporta VoLTE.
-3. **Durante una llamada:** Si al hacer una llamada el indicador de red sigue mostrando "4G" o "LTE" en lugar de bajar a "3G" o "H+", VoLTE está funcionando.
-4. **Código de servicio:** En algunos teléfonos, marca `*#*#4636#*#*` → Phone Information y busca "VoLTE Provisioned" o similar.
+1. **Status bar indicator:** When VoLTE is active, many phones display a "VoLTE" or "HD" icon next to the signal indicator.
+2. **Phone settings:** Go to Settings → Mobile Network → VoLTE Calls (or similar). If the option exists and is enabled, your phone supports VoLTE.
+3. **During a call:** If the network indicator still shows "4G" or "LTE" instead of dropping to "3G" or "H+" while making a call, VoLTE is working.
+4. **Service code:** On some phones, dial `*#*#4636#*#*` → Phone Information and look for "VoLTE Provisioned" or similar.
 
-### Requisitos para VoLTE
+### VoLTE Requirements
 
-Para que VoLTE funcione, se necesitan **tres** condiciones simultáneamente:
+For VoLTE to work, **three** conditions must be met simultaneously:
 
-1. **El teléfono debe soportar VoLTE:** No todos los teléfonos lo soportan. Los gama media y alta de los últimos 5-6 años generalmente sí.
-2. **El operador debe tener VoLTE desplegado:** No todos los operadores ofrecen VoLTE, especialmente en países en desarrollo.
-3. **El teléfono debe estar habilitado/certificado para VoLTE con ese operador específico:** Algunos operadores solo habilitan VoLTE en teléfonos que han certificado. Un teléfono que soporta VoLTE con un operador puede no soportarlo con otro.
+1. **The phone must support VoLTE:** Not all phones support it. Mid-range and high-end phones from the last 5–6 years generally do.
+2. **The operator must have VoLTE deployed:** Not all operators offer VoLTE, especially in developing countries.
+3. **The phone must be enabled/certified for VoLTE with that specific operator:** Some operators only enable VoLTE on phones they have certified. A phone that supports VoLTE with one operator may not support it with another.
 
 ### VoWiFi (Voice over WiFi)
 
-Similar a VoLTE, VoWiFi permite hacer llamadas a través de WiFi cuando la cobertura celular es mala. Si tu operador soporta VoWiFi, puedes activarlo como complemento de VoLTE para garantizar cobertura de voz en interiores.
+Similar to VoLTE, VoWiFi allows making calls over WiFi when cellular coverage is poor. If your operator supports VoWiFi, you can enable it as a complement to VoLTE to ensure voice coverage indoors.
 
 ---
 
-## 6. RadioInfo y el menú de ingeniería
+## 6. RadioInfo and the Engineering Menu
 
-### ¿Qué es RadioInfo?
+### What Is RadioInfo?
 
-RadioInfo es una actividad oculta dentro de la aplicación del sistema "Phone" de Android (com.android.phone). Proporciona acceso directo a información detallada sobre el módem de radio del teléfono y permite modificar configuraciones de red que normalmente no están disponibles en los ajustes regulares.
+RadioInfo is a hidden activity within the Android system "Phone" application (com.android.phone). It provides direct access to detailed information about the phone's radio modem and allows modifying network settings that are normally not available in the regular settings.
 
-### Cómo acceder
+### How to Access It
 
-Existen varias formas de acceder a RadioInfo:
+There are several ways to access RadioInfo:
 
-1. **A través de 4GForce:** La app abre RadioInfo directamente.
-2. **Código de marcación:** Abre la aplicación de Teléfono y marca `*#*#4636#*#*`. Esto abre el menú de pruebas, donde puedes seleccionar "Phone Information" para llegar a RadioInfo.
-3. **ADB (para desarrolladores):** Desde una computadora con ADB:
+1. **Through 4GForce:** The app opens RadioInfo directly.
+2. **Dial code:** Open the Phone app and dial `*#*#4636#*#*`. This opens the testing menu, where you can select "Phone Information" to reach RadioInfo.
+3. **ADB (for developers):** From a computer with ADB:
    ```
    adb shell am start -n com.android.phone/.settings.RadioInfo
    ```
-   o en versiones más antiguas:
+   or on older versions:
    ```
    adb shell am start -n com.android.phone/.RadioInfo
    ```
 
-### Información mostrada en RadioInfo
+### Information Displayed in RadioInfo
 
-RadioInfo muestra una gran cantidad de información técnica:
+RadioInfo shows a large amount of technical information:
 
-- **IMEI:** El identificador único del módem celular.
-- **Phone Number:** El número de teléfono asociado a la SIM (si está disponible).
-- **Network:** El operador al que estás conectado actualmente.
-- **Signal Strength:** La intensidad de la señal en dBm y ASU.
-  - **dBm (decibelios-miliwatts):** Valores típicos:
-    - LTE: -44 dBm (excelente) a -140 dBm (sin señal). Por encima de -80 dBm es bueno, por debajo de -100 dBm es débil.
-    - 3G: -60 dBm (excelente) a -120 dBm (sin señal).
-  - **ASU (Arbitrary Strength Unit):** Una escala que varía según la tecnología. Para LTE, ASU = RSRP + 140.
-- **Service State:** Estado del servicio (In Service, Out of Service, Emergency Only).
-- **Data State:** Estado de la conexión de datos (Connected, Disconnected, Suspended).
-- **Data Network Type:** La tecnología de datos activa (LTE, HSPA+, UMTS, EDGE, etc.).
-- **Voice Network Type:** La tecnología de voz activa.
-- **Roaming:** Indica si estás en roaming (itinerancia).
+- **IMEI:** The unique identifier of the cellular modem.
+- **Phone Number:** The phone number associated with the SIM (if available).
+- **Network:** The operator you are currently connected to.
+- **Signal Strength:** The signal strength in dBm and ASU.
+  - **dBm (decibel-milliwatts):** Typical values:
+    - LTE: -44 dBm (excellent) to -140 dBm (no signal). Above -80 dBm is good, below -100 dBm is weak.
+    - 3G: -60 dBm (excellent) to -120 dBm (no signal).
+  - **ASU (Arbitrary Strength Unit):** A scale that varies by technology. For LTE, ASU = RSRP + 140.
+- **Service State:** Service status (In Service, Out of Service, Emergency Only).
+- **Data State:** Data connection status (Connected, Disconnected, Suspended).
+- **Data Network Type:** The active data technology (LTE, HSPA+, UMTS, EDGE, etc.).
+- **Voice Network Type:** The active voice technology.
+- **Roaming:** Indicates whether you are roaming.
 
-### Set Preferred Network Type (Tipo de red preferida)
+### Set Preferred Network Type
 
-Esta es la opción más importante para forzar 4G. Es un menú desplegable que muestra todos los modos de red soportados por tu teléfono. Los valores más comunes y sus códigos internos son:
+This is the most important option for forcing 4G. It is a dropdown menu showing all network modes supported by your phone. The most common values and their internal codes are:
 
-| Valor | Código RIL | Descripción |
-|-------|-----------|-------------|
-| LTE/WCDMA/GSM (PRL) | 9 | Automático con prioridad LTE |
-| LTE/GSM/WCDMA | 9 | Igual que el anterior (nombre alternativo) |
-| LTE Only | 11 | **Solo LTE — el que usa 4GForce** |
-| LTE/WCDMA | 12 | LTE y 3G, sin 2G |
-| WCDMA preferred | 0 | 3G preferido, con fallback a 2G |
-| GSM Only | 1 | Solo 2G |
-| WCDMA Only | 2 | Solo 3G |
-| GSM/WCDMA (auto) | 3 | 3G y 2G automático |
-| LTE/CDMA/EvDo/GSM/WCDMA | 10 | Automático global (incluye CDMA) |
-| NR/LTE/WCDMA/GSM | 33 | 5G/4G/3G/2G automático |
-| NR/LTE | 41 | 5G y 4G solamente |
-| NR Only | 23 | Solo 5G |
+| Value | RIL Code | Description |
+|-------|----------|-------------|
+| LTE/WCDMA/GSM (PRL) | 9 | Automatic with LTE priority |
+| LTE/GSM/WCDMA | 9 | Same as above (alternative name) |
+| LTE Only | 11 | **LTE only — the one 4GForce uses** |
+| LTE/WCDMA | 12 | LTE and 3G, no 2G |
+| WCDMA preferred | 0 | 3G preferred, with fallback to 2G |
+| GSM Only | 1 | 2G only |
+| WCDMA Only | 2 | 3G only |
+| GSM/WCDMA (auto) | 3 | 3G and 2G automatic |
+| LTE/CDMA/EvDo/GSM/WCDMA | 10 | Global automatic (includes CDMA) |
+| NR/LTE/WCDMA/GSM | 33 | 5G/4G/3G/2G automatic |
+| NR/LTE | 41 | 5G and 4G only |
+| NR Only | 23 | 5G only |
 
-**Nota importante:** Los códigos y opciones disponibles pueden variar significativamente entre fabricantes. Algunos teléfonos muestran todos los modos, otros solo los que el operador ha habilitado.
+**Important note:** The available codes and options can vary significantly between manufacturers. Some phones show all modes, others only those the operator has enabled.
 
-### Otras opciones útiles en RadioInfo
+### Other Useful Options in RadioInfo
 
-- **Toggle Radio:** Enciende y apaga el módulo de radio (equivalente al modo avión para la celular).
-- **Enable/Disable Data:** Activa o desactiva la conexión de datos.
-- **SMSC:** Permite ver y cambiar el centro de mensajes SMS.
-- **Ping Test:** Realiza un ping para verificar la conectividad de datos.
-- **Cell Info:** Muestra información detallada de la celda a la que estás conectado (Cell ID, LAC/TAC, frecuencia, etc.).
+- **Toggle Radio:** Turns the radio module on and off (equivalent to airplane mode for cellular).
+- **Enable/Disable Data:** Activates or deactivates the data connection.
+- **SMSC:** Allows viewing and changing the SMS message center.
+- **Ping Test:** Performs a ping to verify data connectivity.
+- **Cell Info:** Shows detailed information about the cell you are connected to (Cell ID, LAC/TAC, frequency, etc.).
 
-### El menú de pruebas (*#*#4636#*#*)
+### The Testing Menu (*#*#4636#*#*)
 
-El código `*#*#4636#*#*` abre un menú más amplio que incluye:
+The code `*#*#4636#*#*` opens a broader menu that includes:
 
-1. **Phone Information:** La pantalla RadioInfo descrita arriba. Si el teléfono tiene dos SIMs, puede haber "Phone Information (SIM 1)" y "Phone Information (SIM 2)".
-2. **Battery Information:** Información detallada de la batería (voltaje, temperatura, tecnología, estado de salud).
-3. **Usage Statistics:** Estadísticas de uso de aplicaciones (tiempo de primer uso, último uso, veces lanzada).
-4. **WiFi Information:** Información sobre la conexión WiFi actual.
+1. **Phone Information:** The RadioInfo screen described above. If the phone has two SIMs, there may be "Phone Information (SIM 1)" and "Phone Information (SIM 2)."
+2. **Battery Information:** Detailed battery information (voltage, temperature, technology, health status).
+3. **Usage Statistics:** Application usage statistics (first use time, last use, times launched).
+4. **WiFi Information:** Information about the current WiFi connection.
 
-**Nota:** No todos los teléfonos responden a este código. Algunos fabricantes (especialmente Samsung en algunas versiones de One UI) lo desactivan o lo redirigen a otro menú. En esos casos, 4GForce intenta abrir RadioInfo directamente a través de su componente interno.
+**Note:** Not all phones respond to this code. Some manufacturers (especially Samsung on some One UI versions) disable it or redirect it to another menu. In those cases, 4GForce attempts to open RadioInfo directly through its internal component.
 
 ---
 
-## 7. Cómo funciona internamente
+## 7. How It Works Internally
 
-### Arquitectura de la pila de red en Android
+### Android Network Stack Architecture
 
-La selección de red en Android involucra varias capas, desde la aplicación hasta el hardware de radio:
+Network selection on Android involves several layers, from the application to the radio hardware:
 
 ```
 ┌─────────────────────────────┐
-│  Aplicación (4GForce)       │  ← Capa de usuario
+│  Application (4GForce)      │  ← User layer
 ├─────────────────────────────┤
-│  Framework de Android       │  ← TelephonyManager, PhoneFactory
+│  Android Framework          │  ← TelephonyManager, PhoneFactory
 ├─────────────────────────────┤
-│  RIL Daemon (rild)          │  ← Capa de interfaz
+│  RIL Daemon (rild)          │  ← Interface layer
 ├─────────────────────────────┤
-│  Vendor RIL (libril)        │  ← Implementación del fabricante
+│  Vendor RIL (libril)        │  ← Manufacturer implementation
 ├─────────────────────────────┤
-│  Modem / Baseband           │  ← Hardware de radio
+│  Modem / Baseband           │  ← Radio hardware
 └─────────────────────────────┘
 ```
 
 ### RIL (Radio Interface Layer)
 
-El RIL es una capa de abstracción fundamental en Android que actúa como puente entre el sistema operativo y el hardware de radio (módem/baseband). Su función es traducir las solicitudes de alto nivel del framework de Android en comandos específicos que entiende el hardware de radio.
+The RIL is a fundamental abstraction layer in Android that acts as a bridge between the operating system and the radio hardware (modem/baseband). Its function is to translate high-level requests from the Android framework into specific commands that the radio hardware understands.
 
-**Componentes del RIL:**
+**RIL Components:**
 
-1. **rild (RIL Daemon):** Un proceso del sistema que se ejecuta constantemente y maneja la comunicación entre el framework y el hardware.
-2. **Vendor RIL Library:** Una biblioteca proporcionada por el fabricante del chipset (Qualcomm, MediaTek, Samsung, etc.) que implementa los comandos específicos del hardware.
-3. **RIL Java (Telephony Framework):** La capa Java en el framework de Android que las aplicaciones y servicios del sistema usan para interactuar con la telefonía.
+1. **rild (RIL Daemon):** A system process that runs constantly and handles communication between the framework and the hardware.
+2. **Vendor RIL Library:** A library provided by the chipset manufacturer (Qualcomm, MediaTek, Samsung, etc.) that implements hardware-specific commands.
+3. **RIL Java (Telephony Framework):** The Java layer in the Android framework that applications and system services use to interact with telephony.
 
-**Flujo de una solicitud de cambio de red:**
+**Flow of a network change request:**
 
-1. El usuario selecciona "LTE Only" en RadioInfo (o 4GForce abre RadioInfo).
-2. RadioInfo llama a `TelephonyManager.setPreferredNetworkType()`.
-3. El framework envía una solicitud `RIL_REQUEST_SET_PREFERRED_NETWORK_TYPE` al rild.
-4. rild pasa la solicitud a la librería vendor RIL.
-5. La librería vendor traduce esto en comandos AT o QMI (Qualcomm MSM Interface) para el módem.
-6. El módem reconfigura su pila de protocolo de radio para solo buscar y conectarse a celdas LTE.
-7. El módem confirma el cambio de vuelta a través de la cadena.
+1. The user selects "LTE Only" in RadioInfo (or 4GForce opens RadioInfo).
+2. RadioInfo calls `TelephonyManager.setPreferredNetworkType()`.
+3. The framework sends a `RIL_REQUEST_SET_PREFERRED_NETWORK_TYPE` request to rild.
+4. rild passes the request to the vendor RIL library.
+5. The vendor library translates this into AT or QMI (Qualcomm MSM Interface) commands for the modem.
+6. The modem reconfigures its radio protocol stack to only search for and connect to LTE cells.
+7. The modem confirms the change back through the chain.
 
-### El módem / Baseband
+### The Modem / Baseband
 
-El módem (también llamado baseband processor) es un procesador separado dentro del teléfono dedicado exclusivamente a las comunicaciones celulares. Tiene su propio firmware, su propio sistema operativo en tiempo real (RTOS) y opera independientemente del procesador principal de aplicaciones.
+The modem (also called the baseband processor) is a separate processor inside the phone dedicated exclusively to cellular communications. It has its own firmware, its own real-time operating system (RTOS), and operates independently from the main application processor.
 
-**Fabricantes principales de módems:**
-- **Qualcomm (Snapdragon Modem):** Los más extendidos, usados en la mayoría de teléfonos Android.
-- **MediaTek:** Comunes en teléfonos de gama media y económica.
-- **Samsung (Exynos Modem):** Usados en algunos Galaxy (especialmente en mercados fuera de EE.UU.).
-- **HiSilicon (Balong):** Usados en teléfonos Huawei.
+**Major modem manufacturers:**
+- **Qualcomm (Snapdragon Modem):** The most widespread, used in most Android phones.
+- **MediaTek:** Common in mid-range and budget phones.
+- **Samsung (Exynos Modem):** Used in some Galaxy devices (especially in markets outside the USA).
+- **HiSilicon (Balong):** Used in Huawei phones.
 
-**Cuando cambias a LTE Only:**
+**When you switch to LTE Only:**
 
-1. El módem deja de escanear frecuencias 2G y 3G.
-2. Solo mantiene las tablas de celdas vecinas LTE.
-3. Si pierde la señal LTE, entra en estado "No Service" en lugar de buscar redes alternativas.
-4. El ahorro de no escanear múltiples tecnologías puede mejorar ligeramente la batería en áreas con buena cobertura LTE.
+1. The modem stops scanning 2G and 3G frequencies.
+2. It only maintains LTE neighbor cell tables.
+3. If it loses the LTE signal, it enters a "No Service" state instead of searching for alternative networks.
+4. The savings from not scanning multiple technologies can slightly improve battery life in areas with good LTE coverage.
 
-### Persistencia de la configuración
+### Configuration Persistence
 
-Un detalle técnico importante: cuando cambias el tipo de red preferida a través de RadioInfo, este cambio se guarda en la configuración del sistema de Android (`Settings.Global.PREFERRED_NETWORK_MODE`). Sin embargo:
+An important technical detail: when you change the preferred network type through RadioInfo, this change is saved in the Android system settings (`Settings.Global.PREFERRED_NETWORK_MODE`). However:
 
-- Algunos teléfonos **persisten** el cambio incluso después de reiniciar.
-- Otros teléfonos **revierten** al modo predeterminado del operador después de reiniciar.
-- Actualizar el sistema operativo o la configuración del operador puede revertir el cambio.
-- Extraer y volver a insertar la SIM puede revertir el cambio.
-
----
-
-## 8. Casos de uso comunes
-
-### Optimización de velocidad de datos
-
-**Escenario:** Estás en una zona urbana con cobertura LTE estable pero notas que las velocidades son inconsistentes.
-
-**Causa probable:** Tu teléfono está alternando entre LTE y 3G, o el operador está forzando CSFB (bajada a 3G para llamadas) y el teléfono tarda en volver a LTE.
-
-**Solución:** Forzar LTE Only para mantener una conexión estable y velocidades consistentes. Asegúrate de tener VoLTE activo si necesitas recibir llamadas.
-
-### Pruebas de cobertura LTE
-
-**Escenario:** Eres técnico de red y necesitas verificar la cobertura LTE en una zona específica.
-
-**Uso:** Forzar LTE Only y moverte por la zona observando la intensidad de señal (RSRP, RSRQ, SINR) en RadioInfo. Esto te da una imagen clara de la cobertura LTE sin que el teléfono enmascare problemas bajando a 3G.
-
-### Evitar congestión de 3G
-
-**Escenario:** Estás en un evento masivo (concierto, estadio) o en una zona con infraestructura de red limitada. La conexión de datos es extremadamente lenta.
-
-**Causa probable:** La mayoría de los usuarios están conectados a 3G, congestionando esa red. La red LTE puede estar menos cargada porque no todos los teléfonos la soportan o porque el operador tiene más capacidad LTE.
-
-**Solución:** Forzar LTE Only puede darte acceso a una red menos congestionada con mejores velocidades.
-
-### Dispositivos IoT y routers 4G
-
-**Escenario:** Tienes un router 4G portátil o un dispositivo IoT que solo necesita datos y no voz.
-
-**Uso:** Forzar LTE Only es ideal para estos dispositivos ya que no necesitan hacer llamadas y te aseguras de que siempre usen la conexión más rápida disponible.
-
-### Zonas rurales con señal mixta
-
-**Escenario:** Vives en una zona rural donde hay señal LTE débil pero funcional, y señal 3G fuerte. Tu teléfono prefiere 3G por la señal más fuerte, pero la velocidad es muy baja.
-
-**Solución:** Forzar LTE Only te mantiene en la red más rápida, aunque la señal sea más débil. Mientras el RSRP sea superior a -115 dBm aproximadamente, LTE seguirá funcionando.
-
-### Speed testing y benchmarking
-
-**Escenario:** Quieres medir el rendimiento real de la red LTE de tu operador.
-
-**Uso:** Forzar LTE Only antes de ejecutar pruebas de velocidad (Speedtest, Fast.com) garantiza que los resultados reflejen exclusivamente el rendimiento LTE, sin interferencia de handovers o cambios de red durante la prueba.
-
-### Ahorro de batería selectivo
-
-**Escenario:** Estás en una zona con buena cobertura LTE y no necesitas llamadas (usas WhatsApp/Telegram para comunicarte).
-
-**Uso:** Forzar LTE Only puede ahorrar un poco de batería al evitar que el módem escanee constantemente redes 2G y 3G.
+- Some phones **persist** the change even after rebooting.
+- Other phones **revert** to the operator's default mode after rebooting.
+- Updating the operating system or operator configuration can revert the change.
+- Removing and reinserting the SIM can revert the change.
 
 ---
 
-## 9. Riesgos y precauciones
+## 8. Common Use Cases
 
-### Pérdida de llamadas y SMS
+### Data Speed Optimization
 
-**Este es el riesgo más importante.** Sin VoLTE activado y funcionando, forzar LTE Only significa:
+**Scenario:** You are in an urban area with stable LTE coverage but notice inconsistent speeds.
 
-- **No puedes hacer llamadas telefónicas.** El teléfono no tiene acceso a las redes 2G/3G necesarias para las llamadas de circuito conmutado.
-- **No puedes recibir llamadas.** Las llamadas entrantes no llegarán a tu teléfono.
-- **Los SMS pueden no funcionar.** Los mensajes de texto tradicionales dependen de la infraestructura 2G/3G en la mayoría de las redes.
+**Probable cause:** Your phone is alternating between LTE and 3G, or the operator is forcing CSFB (dropping to 3G for calls) and the phone is slow to return to LTE.
 
-**Mitigación:**
-- Verifica que VoLTE esté activo antes de forzar LTE Only.
-- Si no tienes VoLTE, usa aplicaciones de mensajería (WhatsApp, Telegram, Signal) para comunicarte.
-- Recuerda restaurar el modo automático cuando termines de necesitar LTE Only.
+**Solution:** Force LTE Only to maintain a stable connection and consistent speeds. Make sure VoLTE is active if you need to receive calls.
 
-### Llamadas de emergencia
+### LTE Coverage Testing
 
-**Precaución crítica:** En LTE Only, las llamadas de emergencia (911, 112, etc.) pueden no funcionar en todos los teléfonos y redes.
+**Scenario:** You are a network technician and need to verify LTE coverage in a specific area.
 
-- Muchos teléfonos tienen un mecanismo de seguridad que permite llamadas de emergencia independientemente de la configuración de red.
-- Sin embargo, esto **no está garantizado** en todos los dispositivos.
-- Si estás en una situación donde podrías necesitar llamar a emergencias, **no uses LTE Only**.
+**Use:** Force LTE Only and move around the area observing signal strength (RSRP, RSRQ, SINR) in RadioInfo. This gives you a clear picture of LTE coverage without the phone masking problems by dropping to 3G.
 
-### Pérdida total de cobertura
+### Avoiding 3G Congestion
 
-En modo automático, si sales de una zona con cobertura LTE, tu teléfono baja automáticamente a 3G o 2G y mantiene la conexión. En LTE Only, perderás toda conexión de red.
+**Scenario:** You are at a massive event (concert, stadium) or in an area with limited network infrastructure. The data connection is extremely slow.
 
-**Mitigación:**
-- No uses LTE Only si vas a viajar o moverte por zonas con cobertura variable.
-- Especialmente peligroso en áreas rurales donde la cobertura LTE es irregular.
+**Probable cause:** Most users are connected to 3G, congesting that network. The LTE network may be less loaded because not all phones support it or the operator has more LTE capacity.
 
-### Impacto en la batería
+**Solution:** Forcing LTE Only can give you access to a less congested network with better speeds.
 
-El impacto en la batería de LTE Only puede ir en ambas direcciones:
+### IoT Devices and 4G Routers
 
-- **Mejor batería:** Si tienes buena señal LTE estable. El módem no gasta energía escaneando otras redes ni haciendo handovers.
-- **Peor batería:** Si la señal LTE es débil o inestable. El módem consume más energía intentando mantener una conexión débil y buscando continuamente celdas LTE mejores.
+**Scenario:** You have a portable 4G router or an IoT device that only needs data and not voice.
 
-### Comportamiento después de reiniciar
+**Use:** Forcing LTE Only is ideal for these devices since they don't need to make calls and you ensure they always use the fastest available connection.
 
-Algunos teléfonos mantienen la configuración de LTE Only después de reiniciar, otros la revierten al modo predeterminado. No asumas que volverá al modo automático automáticamente.
+### Rural Areas with Mixed Signal
 
-**Recomendación:** Si has forzado LTE Only, verifica manualmente después de reiniciar si la configuración se mantuvo o se revirtió.
+**Scenario:** You live in a rural area where there is weak but functional LTE signal, and strong 3G signal. Your phone prefers 3G due to the stronger signal, but the speed is very low.
 
-### Actualizaciones del operador
+**Solution:** Forcing LTE Only keeps you on the faster network, even though the signal is weaker. As long as the RSRP is above approximately -115 dBm, LTE will continue to work.
 
-Los operadores pueden enviar actualizaciones de configuración de red (carrier config updates) que restablecen el tipo de red preferida al valor predeterminado. Esto puede ocurrir sin previo aviso.
+### Speed Testing and Benchmarking
 
----
+**Scenario:** You want to measure the real performance of your operator's LTE network.
 
-## 10. Preguntas frecuentes
+**Use:** Forcing LTE Only before running speed tests (Speedtest, Fast.com) ensures the results exclusively reflect LTE performance, without interference from handovers or network changes during the test.
 
-### ¿Forzar 4G daña mi teléfono?
+### Selective Battery Saving
 
-**No.** Cambiar el tipo de red preferida es una configuración de software completamente segura. No afecta al hardware de ninguna manera. Puedes cambiar entre modos tantas veces como quieras.
+**Scenario:** You are in an area with good LTE coverage and don't need calls (you use WhatsApp/Telegram to communicate).
 
-### ¿Es legal forzar 4G?
-
-**Sí.** Estás cambiando una configuración de tu propio teléfono. No estás hackeando la red ni violando ningún acuerdo de servicio. La opción existe en Android precisamente para ser usada.
-
-### ¿Por qué mi teléfono no tiene la opción "LTE Only"?
-
-Posibles razones:
-
-1. **El operador la ha ocultado:** Algunos operadores configuran el software del teléfono para ocultar opciones avanzadas de red. RadioInfo puede mostrar opciones que el menú de ajustes normal no muestra.
-2. **El teléfono no soporta LTE:** Si es un teléfono muy antiguo, puede no tener hardware LTE.
-3. **El fabricante la ha eliminado:** Algunos fabricantes eliminan la opción en sus capas de personalización.
-4. **El código de marcación no funciona:** El código `*#*#4636#*#*` no funciona en todos los teléfonos. Intenta usar 4GForce que accede directamente al componente RadioInfo.
-
-### ¿Puedo forzar 5G de la misma manera?
-
-Sí, en teléfonos con 5G, RadioInfo generalmente incluye opciones como "NR Only" o "NR/LTE". Sin embargo, las opciones 5G son menos comunes y dependen mucho del fabricante y la versión de Android.
-
-### ¿Por qué mi velocidad no mejora al forzar 4G?
-
-Posibles causas:
-
-1. **Ya estabas en LTE:** Si tu teléfono ya estaba conectado a LTE en modo automático, forzar LTE Only no cambiará nada.
-2. **Congestión en LTE:** La red LTE en tu zona puede estar congestionada. Forzar LTE no soluciona esto.
-3. **Limitación del plan:** Tu operador puede limitar la velocidad según tu plan de datos.
-4. **Señal débil:** Una señal LTE débil (RSRP por debajo de -110 dBm) puede resultar en velocidades bajas.
-5. **Limitación del dispositivo:** La categoría LTE de tu teléfono limita la velocidad máxima.
-
-### ¿Cómo vuelvo al modo normal?
-
-1. Abre 4GForce y pulsa el botón para abrir RadioInfo.
-2. Busca "Set Preferred Network Type".
-3. Selecciona "LTE/WCDMA/GSM (auto)" o similar (el modo que anotaste antes de cambiar).
-4. El teléfono volverá al comportamiento automático inmediatamente.
-
-### ¿Funciona con teléfonos dual SIM?
-
-Sí, pero la configuración se aplica por SIM. En teléfonos dual SIM, RadioInfo puede mostrar información de cada SIM por separado ("Phone Information (SIM 1)" y "Phone Information (SIM 2)"). Debes cambiar la configuración en la SIM que quieres forzar a LTE.
-
-### ¿Puedo usar 4GForce con una SIM de datos (solo datos)?
-
-Sí, y de hecho es un uso ideal. Las SIM de datos no necesitan voz ni SMS, así que no pierdes ninguna funcionalidad al forzar LTE Only.
-
-### ¿Por qué 4GForce no cambia la configuración directamente?
-
-Android no permite que aplicaciones normales (sin permisos de sistema/root) cambien el tipo de red preferida programáticamente. Esto es una restricción de seguridad por diseño. La única forma de cambiarlo es a través de la interfaz del sistema (RadioInfo) o con permisos especiales que solo tienen las aplicaciones del sistema.
-
-Por eso 4GForce actúa como un acceso directo: te lleva rápidamente al menú correcto donde puedes hacer el cambio manualmente con un toque.
-
-### ¿Qué significan RSRP, RSRQ y SINR?
-
-Estas son métricas técnicas de la calidad de señal LTE que puedes ver en RadioInfo:
-
-- **RSRP (Reference Signal Received Power):** La potencia de la señal de referencia. Es la métrica principal de intensidad de señal.
-  - Excelente: > -80 dBm
-  - Buena: -80 a -90 dBm
-  - Aceptable: -90 a -100 dBm
-  - Débil: -100 a -110 dBm
-  - Muy débil: < -110 dBm
-
-- **RSRQ (Reference Signal Received Quality):** La calidad de la señal, que tiene en cuenta la interferencia.
-  - Excelente: > -10 dB
-  - Buena: -10 a -15 dB
-  - Aceptable: -15 a -20 dB
-  - Mala: < -20 dB
-
-- **SINR (Signal to Interference plus Noise Ratio):** La relación señal-ruido. Indica qué tan limpia es la señal.
-  - Excelente: > 20 dB
-  - Buena: 13-20 dB
-  - Aceptable: 0-13 dB
-  - Mala: < 0 dB
+**Use:** Forcing LTE Only can save some battery by preventing the modem from constantly scanning 2G and 3G networks.
 
 ---
 
-*Documentación creada para la aplicación 4GForce. Para más información, visita el [repositorio en GitHub](https://github.com/albertolicea00/apk4gforce).*
+## 9. Risks and Precautions
+
+### Loss of Calls and SMS
+
+**This is the most important risk.** Without VoLTE enabled and working, forcing LTE Only means:
+
+- **You cannot make phone calls.** The phone does not have access to the 2G/3G networks needed for circuit-switched calls.
+- **You cannot receive calls.** Incoming calls will not reach your phone.
+- **SMS may not work.** Traditional text messages depend on 2G/3G infrastructure on most networks.
+
+**Mitigation:**
+- Verify that VoLTE is active before forcing LTE Only.
+- If you don't have VoLTE, use messaging apps (WhatsApp, Telegram, Signal) to communicate.
+- Remember to restore automatic mode when you no longer need LTE Only.
+
+### Emergency Calls
+
+**Critical precaution:** In LTE Only mode, emergency calls (911, 112, etc.) may not work on all phones and networks.
+
+- Many phones have a safety mechanism that allows emergency calls regardless of network configuration.
+- However, this is **not guaranteed** on all devices.
+- If you are in a situation where you might need to call emergency services, **do not use LTE Only**.
+
+### Total Loss of Coverage
+
+In automatic mode, if you leave an area with LTE coverage, your phone automatically drops to 3G or 2G and maintains the connection. In LTE Only, you will lose all network connectivity.
+
+**Mitigation:**
+- Do not use LTE Only if you are going to travel or move through areas with variable coverage.
+- Especially dangerous in rural areas where LTE coverage is spotty.
+
+### Battery Impact
+
+The battery impact of LTE Only can go both ways:
+
+- **Better battery:** If you have good, stable LTE signal. The modem does not spend energy scanning other networks or performing handovers.
+- **Worse battery:** If the LTE signal is weak or unstable. The modem consumes more energy trying to maintain a weak connection and continuously searching for better LTE cells.
+
+### Behavior After Rebooting
+
+Some phones maintain the LTE Only setting after rebooting, others revert to the default mode. Do not assume it will automatically return to automatic mode.
+
+**Recommendation:** If you have forced LTE Only, manually verify after rebooting whether the setting was maintained or reverted.
+
+### Operator Updates
+
+Operators can send network configuration updates (carrier config updates) that reset the preferred network type to the default value. This can happen without prior notice.
+
+---
+
+## 10. Frequently Asked Questions
+
+### Does forcing 4G damage my phone?
+
+**No.** Changing the preferred network type is a completely safe software setting. It does not affect the hardware in any way. You can switch between modes as many times as you want.
+
+### Is forcing 4G legal?
+
+**Yes.** You are changing a setting on your own phone. You are not hacking the network or violating any service agreement. The option exists in Android precisely to be used.
+
+### Why doesn't my phone have the "LTE Only" option?
+
+Possible reasons:
+
+1. **The operator has hidden it:** Some operators configure the phone's software to hide advanced network options. RadioInfo may show options that the normal settings menu does not.
+2. **The phone does not support LTE:** If it is a very old phone, it may not have LTE hardware.
+3. **The manufacturer has removed it:** Some manufacturers remove the option in their customization layers.
+4. **The dial code doesn't work:** The code `*#*#4636#*#*` does not work on all phones. Try using 4GForce, which accesses the RadioInfo component directly.
+
+### Can I force 5G the same way?
+
+Yes, on phones with 5G, RadioInfo generally includes options like "NR Only" or "NR/LTE." However, 5G options are less common and depend heavily on the manufacturer and Android version.
+
+### Why doesn't my speed improve when forcing 4G?
+
+Possible causes:
+
+1. **You were already on LTE:** If your phone was already connected to LTE in automatic mode, forcing LTE Only will not change anything.
+2. **LTE congestion:** The LTE network in your area may be congested. Forcing LTE does not fix this.
+3. **Plan limitation:** Your operator may limit speed based on your data plan.
+4. **Weak signal:** A weak LTE signal (RSRP below -110 dBm) can result in low speeds.
+5. **Device limitation:** Your phone's LTE category limits the maximum speed.
+
+### How do I go back to normal mode?
+
+1. Open 4GForce and tap the button to open RadioInfo.
+2. Look for "Set Preferred Network Type."
+3. Select "LTE/WCDMA/GSM (auto)" or similar (the mode you noted before changing).
+4. The phone will return to automatic behavior immediately.
+
+### Does it work with dual SIM phones?
+
+Yes, but the setting is applied per SIM. On dual SIM phones, RadioInfo may show information for each SIM separately ("Phone Information (SIM 1)" and "Phone Information (SIM 2)"). You must change the setting on the SIM you want to force to LTE.
+
+### Can I use 4GForce with a data-only SIM?
+
+Yes, and in fact it is an ideal use case. Data-only SIMs don't need voice or SMS, so you don't lose any functionality by forcing LTE Only.
+
+### Why doesn't 4GForce change the setting directly?
+
+Android does not allow normal applications (without system/root permissions) to programmatically change the preferred network type. This is a security restriction by design. The only way to change it is through the system interface (RadioInfo) or with special permissions that only system applications have.
+
+That is why 4GForce acts as a shortcut: it quickly takes you to the correct menu where you can make the change manually with a single tap.
+
+### What do RSRP, RSRQ, and SINR mean?
+
+These are technical metrics of LTE signal quality that you can see in RadioInfo:
+
+- **RSRP (Reference Signal Received Power):** The reference signal power. This is the primary signal strength metric.
+  - Excellent: > -80 dBm
+  - Good: -80 to -90 dBm
+  - Acceptable: -90 to -100 dBm
+  - Weak: -100 to -110 dBm
+  - Very weak: < -110 dBm
+
+- **RSRQ (Reference Signal Received Quality):** The signal quality, which takes interference into account.
+  - Excellent: > -10 dB
+  - Good: -10 to -15 dB
+  - Acceptable: -15 to -20 dB
+  - Poor: < -20 dB
+
+- **SINR (Signal to Interference plus Noise Ratio):** The signal-to-noise ratio. Indicates how clean the signal is.
+  - Excellent: > 20 dB
+  - Good: 13–20 dB
+  - Acceptable: 0–13 dB
+  - Poor: < 0 dB
+
+---
+
+*Documentation created for the 4GForce application. For more information, visit the [GitHub repository](https://github.com/albertolicea00/apk4gforce).*
