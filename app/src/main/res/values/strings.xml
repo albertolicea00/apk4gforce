@@ -2,12 +2,24 @@
 <resources>
     <string name="app_name">4GForce</string>
     <string name="title">Fuerza solo LTE (4G)</string>
-    <string name="intro">Esta opción abre el menú nativo de información de radio de Android mediante un acceso directo. Esta app no cambia el tipo de red: dentro de ese menú debes seleccionar LTE Only (Solo LTE) manualmente.</string>
-    <string name="warning">Si seleccionas Solo LTE, tu teléfono no recibirá ni podrá realizar llamadas o enviar SMS. Antes de cambiarlo, fíjate en el tipo de red preferida actual para poder restaurarlo después.</string>
-    <string name="restore">El tipo de red preferida original puede aparecer como “LTE/TD-SCDMA/UMTS” o “LTE/TD-SCDMA/WCDMA”. Anótalo antes de elegir Solo LTE y restáuralo cuando termines.</string>
-    <string name="device_support">No todos los teléfonos permiten abrir o usar esta herramienta. La disponibilidad depende de la marca y del modelo; algunos fabricantes bloquean el acceso a este menú o el cambio de red.</string>
+
+    <string name="intro">Esta app te lleva directamente al menú oculto de radio de Android, donde puedes forzar que tu teléfono use <b>solo la red 4G (LTE)</b>.</string>
+
+    <string name="section_how">Cómo funciona</string>
+    <string name="step_1"><b>1.</b>  Pulsa el botón de abajo para abrir el menú de radio.</string>
+    <string name="step_2"><b>2.</b>  Busca la opción <b>\"Tipo de red preferida\"</b> o <i>\"Set Preferred Network Type\"</i>.</string>
+    <string name="step_3"><b>3.</b>  Selecciona <b>\"LTE Only\"</b> (Solo LTE).</string>
+    <string name="step_4"><b>4.</b>  Listo. Tu teléfono ahora solo usará la red 4G.</string>
+
+    <string name="section_warning">⚠️ Antes de cambiar</string>
+    <string name="warning_calls"><b>Sin llamadas ni SMS.</b> Al activar Solo LTE, tu teléfono <b>no podrá hacer ni recibir llamadas ni mensajes de texto</b>. Las llamadas usan 2G/3G en la mayoría de los teléfonos.</string>
+    <string name="warning_note">Anota el tipo de red actual antes de cambiarlo. Suele aparecer como <i>\"LTE/TD-SCDMA/UMTS\"</i> o <i>\"LTE/TD-SCDMA/WCDMA\"</i>. Lo necesitarás para volver a la normalidad.</string>
+    <string name="warning_restore">Para restaurar, vuelve a este menú y selecciona el tipo de red original que anotaste.</string>
+
+    <string name="section_compat">Compatibilidad</string>
+    <string name="compat_text">No todos los teléfonos permiten abrir este menú. Algunos fabricantes (especialmente <b>Samsung</b>, <b>Xiaomi</b> y <b>Huawei</b>) bloquean el acceso en ciertas versiones. Si el botón principal no funciona, prueba con el menú de pruebas.</string>
+
     <string name="open_menu">Abrir menú de radio de Android</string>
-    <string name="dial_imei">Ver IMEI (*#06#)</string>
     <string name="dial_radio">Abrir menú de pruebas (*#*#4636#*#*)</string>
     <string name="unavailable">Este teléfono no permite abrir el menú de radio.</string>
 </resources>

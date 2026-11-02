@@ -21,10 +21,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<MaterialButton>(R.id.btn_dial_imei).setOnClickListener {
-            dialCode("*#06#")
-        }
-
         findViewById<MaterialButton>(R.id.btn_dial_radio).setOnClickListener {
             dialCode("*#*#4636#*#*")
         }

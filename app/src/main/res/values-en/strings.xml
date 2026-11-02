@@ -2,12 +2,24 @@
 <resources>
     <string name="app_name">4GForce</string>
     <string name="title">Fuerza solo LTE (4G)</string>
-    <string name="intro">This shortcut opens Android\'s native radio information menu. This app does not change the network type; you must select LTE Only manually in that menu.</string>
-    <string name="warning">If you select LTE Only, your phone will not receive or make calls or send SMS. Before changing it, note the current preferred network type so you can restore it later.</string>
-    <string name="restore">Your original preferred network type may appear as “LTE/TD-SCDMA/UMTS” or “LTE/TD-SCDMA/WCDMA”. Write it down before selecting LTE Only and restore it when you are done.</string>
-    <string name="device_support">Not all phones can open or use this tool. Availability depends on the brand and model; some manufacturers block access to this menu or network changes.</string>
+
+    <string name="intro">This app takes you directly to Android\'s hidden radio menu, where you can force your phone to use <b>only the 4G (LTE) network</b>.</string>
+
+    <string name="section_how">How it works</string>
+    <string name="step_1"><b>1.</b>  Tap the button below to open the radio menu.</string>
+    <string name="step_2"><b>2.</b>  Look for <b>\"Set Preferred Network Type\"</b>.</string>
+    <string name="step_3"><b>3.</b>  Select <b>\"LTE Only\"</b>.</string>
+    <string name="step_4"><b>4.</b>  Done. Your phone will now only use the 4G network.</string>
+
+    <string name="section_warning">⚠️ Before you change</string>
+    <string name="warning_calls"><b>No calls or SMS.</b> With LTE Only enabled, your phone <b>cannot make or receive calls or text messages</b>. Calls use 2G/3G on most phones.</string>
+    <string name="warning_note">Write down your current network type before changing it. It usually appears as <i>\"LTE/TD-SCDMA/UMTS\"</i> or <i>\"LTE/TD-SCDMA/WCDMA\"</i>. You\'ll need it to go back to normal.</string>
+    <string name="warning_restore">To restore, go back to this menu and select the original network type you wrote down.</string>
+
+    <string name="section_compat">Compatibility</string>
+    <string name="compat_text">Not all phones allow opening this menu. Some manufacturers (especially <b>Samsung</b>, <b>Xiaomi</b> and <b>Huawei</b>) block access on certain versions. If the main button doesn\'t work, try the testing menu.</string>
+
     <string name="open_menu">Open Android radio menu</string>
-    <string name="dial_imei">Show IMEI (*#06#)</string>
     <string name="dial_radio">Open testing menu (*#*#4636#*#*)</string>
     <string name="unavailable">This phone does not allow opening the radio menu.</string>
 </resources>
