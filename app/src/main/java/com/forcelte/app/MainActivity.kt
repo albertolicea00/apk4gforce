@@ -3,7 +3,6 @@ package com.forcelte.app
 import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,19 +20,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<MaterialButton>(R.id.btn_dial_radio).setOnClickListener {
-            dialCode("*#*#4636#*#*")
-        }
-    }
-
-    private fun dialCode(code: String) {
-        try {
-            startActivity(
-                Intent(Intent.ACTION_DIAL, Uri.parse("tel:${Uri.encode(code)}"))
-            )
-        } catch (_: ActivityNotFoundException) {
-            Toast.makeText(this, R.string.unavailable, Toast.LENGTH_LONG).show()
-        }
     }
 
     private fun openRadioInfoMenu(): Boolean {

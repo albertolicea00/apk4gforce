@@ -17,9 +17,8 @@
     <string name="warning_restore">Para restaurar, vuelve a este menú y selecciona el tipo de red original que anotaste.</string>
 
     <string name="section_compat">Compatibilidad</string>
-    <string name="compat_text">No todos los teléfonos permiten abrir este menú. Algunos fabricantes (especialmente <b>Samsung</b>, <b>Xiaomi</b> y <b>Huawei</b>) bloquean el acceso en ciertas versiones. Si el botón principal no funciona, prueba con el menú de pruebas.</string>
+    <string name="compat_text">No todos los teléfonos permiten abrir este menú. Si el botón no funciona, abre la app de <b>Teléfono</b> y marca manualmente el código <b>*#*#4636#*#*</b>. Esto abre el menú oculto de pruebas de Android, donde encontrarás la misma opción de tipo de red.</string>
 
     <string name="open_menu">Abrir menú de radio de Android</string>
-    <string name="dial_radio">Abrir menú de pruebas (*#*#4636#*#*)</string>
     <string name="unavailable">Este teléfono no permite abrir el menú de radio.</string>
 </resources>

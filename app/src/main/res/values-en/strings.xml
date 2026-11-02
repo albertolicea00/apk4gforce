@@ -17,9 +17,8 @@
     <string name="warning_restore">To restore, go back to this menu and select the original network type you wrote down.</string>
 
     <string name="section_compat">Compatibility</string>
-    <string name="compat_text">Not all phones allow opening this menu. Some manufacturers (especially <b>Samsung</b>, <b>Xiaomi</b> and <b>Huawei</b>) block access on certain versions. If the main button doesn\'t work, try the testing menu.</string>
+    <string name="compat_text">Not all phones allow opening this menu. If the button doesn\'t work, open the <b>Phone</b> app and manually dial <b>*#*#4636#*#*</b>. This opens Android\'s hidden testing menu, where you\'ll find the same network type option.</string>
 
     <string name="open_menu">Open Android radio menu</string>
-    <string name="dial_radio">Open testing menu (*#*#4636#*#*)</string>
     <string name="unavailable">This phone does not allow opening the radio menu.</string>
 </resources>
