@@ -39,7 +39,7 @@ Requires signing config in `app/build.gradle.kts` or manual signing with `apksig
 
 - Android Studio or JDK 17+
 - Android SDK 35 (compileSdk)
-- minSdk 21 (Android 5.0+)
+- minSdk 16 (Android 4.1+)
 - Zero permissions required
 
 ## Compatibility
