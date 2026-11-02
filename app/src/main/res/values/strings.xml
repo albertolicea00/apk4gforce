@@ -17,7 +17,9 @@
     <string name="warning_restore">Para restaurar, vuelve a este menú y selecciona el tipo de red original que anotaste.</string>
 
     <string name="section_compat">Compatibilidad</string>
-    <string name="compat_text">No todos los teléfonos permiten abrir este menú. Si el botón no funciona, abre la app de <b>Teléfono</b> y marca manualmente el código <b>*#*#4636#*#*</b>. Esto abre el menú oculto de pruebas de Android, donde encontrarás la misma opción de tipo de red.</string>
+    <string name="compat_text">No todos los teléfonos permiten abrir este menú. Si el botón no funciona, abre la app de <b>Teléfono</b> y marca manualmente este código:</string>
+    <string name="dial_code">*#*#4636#*#*</string>
+    <string name="compat_hint">Esto abre el menú oculto de pruebas de Android, donde encontrarás la misma opción de tipo de red.</string>
 
     <string name="open_menu">Abrir menú de radio de Android</string>
     <string name="unavailable">Este teléfono no permite abrir el menú de radio.</string>
