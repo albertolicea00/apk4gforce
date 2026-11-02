@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">4G a Cojone</string>
+    <string name="title">Fuerza solo LTE (4G)</string>
+    <string name="intro">Esta opción abre el menú nativo de información de radio de Android mediante un acceso directo. Esta app no cambia el tipo de red: dentro de ese menú debes seleccionar LTE Only (Solo LTE) manualmente.</string>
+    <string name="warning">Si seleccionas Solo LTE, tu teléfono no recibirá ni podrá realizar llamadas o enviar SMS. Antes de cambiarlo, fíjate en el tipo de red preferida actual para poder restaurarlo después.</string>
+    <string name="restore">El tipo de red preferida original puede aparecer como “LTE/TD-SCDMA/UMTS” o “LTE/TD-SCDMA/WCDMA”. Anótalo antes de elegir Solo LTE y restáuralo cuando termines.</string>
+    <string name="device_support">No todos los teléfonos permiten abrir o usar esta herramienta. La disponibilidad depende de la marca y del modelo; algunos fabricantes bloquean el acceso a este menú o el cambio de red.</string>
+    <string name="open_menu">Abrir menú de radio de Android</string>
+    <string name="unavailable">Este teléfono no permite abrir el menú de radio.</string>
+</resources>
