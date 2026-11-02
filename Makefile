@@ -22,7 +22,7 @@
 #
 # 5. Publish Release on GitHub:
 #      gh release create "v$(VERSION_NAME)" \
-#          app/build/outputs/apk/release/4g-a-cojone-v$(VERSION_NAME)-release.apk \
+#          app/build/outputs/apk/release/4gforce-v$(VERSION_NAME)-release.apk \
 #          --title "v$(VERSION_NAME)" --notes "..."
 # ==============================================================================
 
@@ -37,7 +37,7 @@ PATCH := $(word 3,$(subst ., ,$(VERSION_NAME)))
 
 APK_DEBUG   := app/build/outputs/apk/debug/app-debug.apk
 APK_RELEASE := app/build/outputs/apk/release/app-release-unsigned.apk
-APK_RENAMED := app/build/outputs/apk/release/4g-a-cojone-v$(VERSION_NAME)-release.apk
+APK_RENAMED := app/build/outputs/apk/release/4gforce-v$(VERSION_NAME)-release.apk
 
 .PHONY: help version build release clean bump-patch bump-minor bump-major
 
