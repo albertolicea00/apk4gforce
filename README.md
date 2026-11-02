@@ -1,4 +1,4 @@
-# 4G a Cojone
+# 4GForce
 
 App Android ultraligera que abre el menú oculto de radio de Android para forzar el modo **Solo LTE (4G)** manualmente.
 

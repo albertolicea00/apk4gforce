@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">4G a Cojone</string>
+    <string name="app_name">4GForce</string>
     <string name="title">Fuerza solo LTE (4G)</string>
     <string name="intro">Esta opción abre el menú nativo de información de radio de Android mediante un acceso directo. Esta app no cambia el tipo de red: dentro de ese menú debes seleccionar LTE Only (Solo LTE) manualmente.</string>
     <string name="warning">Si seleccionas Solo LTE, tu teléfono no recibirá ni podrá realizar llamadas o enviar SMS. Antes de cambiarlo, fíjate en el tipo de red preferida actual para poder restaurarlo después.</string>

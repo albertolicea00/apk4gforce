@@ -1,5 +1,5 @@
 # ==============================================================================
-# 4G a Cojone :: Version Management & Release
+# 4GForce :: Version Management & Release
 # ==============================================================================
 #
 # Manual Release Workflow:
