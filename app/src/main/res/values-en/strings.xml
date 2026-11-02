@@ -7,5 +7,7 @@
     <string name="restore">Your original preferred network type may appear as “LTE/TD-SCDMA/UMTS” or “LTE/TD-SCDMA/WCDMA”. Write it down before selecting LTE Only and restore it when you are done.</string>
     <string name="device_support">Not all phones can open or use this tool. Availability depends on the brand and model; some manufacturers block access to this menu or network changes.</string>
     <string name="open_menu">Open Android radio menu</string>
+    <string name="dial_imei">Show IMEI (*#06#)</string>
+    <string name="dial_radio">Open testing menu (*#*#4636#*#*)</string>
     <string name="unavailable">This phone does not allow opening the radio menu.</string>
 </resources>

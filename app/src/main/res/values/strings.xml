@@ -7,5 +7,7 @@
     <string name="restore">El tipo de red preferida original puede aparecer como “LTE/TD-SCDMA/UMTS” o “LTE/TD-SCDMA/WCDMA”. Anótalo antes de elegir Solo LTE y restáuralo cuando termines.</string>
     <string name="device_support">No todos los teléfonos permiten abrir o usar esta herramienta. La disponibilidad depende de la marca y del modelo; algunos fabricantes bloquean el acceso a este menú o el cambio de red.</string>
     <string name="open_menu">Abrir menú de radio de Android</string>
+    <string name="dial_imei">Ver IMEI (*#06#)</string>
+    <string name="dial_radio">Abrir menú de pruebas (*#*#4636#*#*)</string>
     <string name="unavailable">Este teléfono no permite abrir el menú de radio.</string>
 </resources>
