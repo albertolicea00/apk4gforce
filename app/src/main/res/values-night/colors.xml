@@ -7,8 +7,8 @@
     <color name="surface">#121a2e</color>
     <color name="text_primary">#E0E4EE</color>
     <color name="text_secondary">#8090B0</color>
-    <color name="warning_bg">#121a2e</color>
-    <color name="warning_text">#70A0D0</color>
+    <color name="warning_bg">#2A1A00</color>
+    <color name="warning_text">#FFB74D</color>
     <color name="outline">#253050</color>
     <color name="status_bar">#0a0f1a</color>
 </resources>
