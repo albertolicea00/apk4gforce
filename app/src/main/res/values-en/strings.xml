@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">4GForce</string>
-    <string name="title">Fuerza solo LTE (4G)</string>
+    <string name="title">Force 4G network</string>
 
     <string name="intro">This app takes you directly to Android\'s hidden radio menu, where you can force your phone to use <b>only the 4G (LTE) network</b>.</string>
 
