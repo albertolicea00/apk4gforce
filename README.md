@@ -4,44 +4,30 @@ Lightweight Android app that opens Android's hidden radio menu to manually force
 
 ## What it does
 
-Three buttons:
+One button opens `RadioInfo`, Android's native screen where you can change the preferred network type to **LTE Only**. The app does not modify phone settings — it just takes you to the right menu.
 
-1. **Open Android radio menu** — opens `RadioInfo`, the native screen where you can change the preferred network type to **LTE Only**. The app does not modify phone settings — it just takes you to the right menu.
-2. **Show IMEI (*#06#)** — opens the dialer with the IMEI code.
-3. **Open testing menu (*#\*#4636#\*#\*)** — opens the dialer with the hidden testing menu code.
+If the button doesn't work on your device, the app explains how to manually dial `*#*#4636#*#*` to access the hidden testing menu.
+
+## Features
+
+- Opens Android's native RadioInfo menu with one tap
+- Step-by-step instructions on how to force 4G
+- Warning section explaining risks and how to restore settings
+- Fallback dial code for unsupported devices
+- Info screen with version, developer, and links
+- Zero permissions required
+- No ads, no tracking, no internet
+- Light and dark theme (follows system)
+- Spanish and English
 
 ## Warning
 
 Selecting LTE Only means your phone **cannot make or receive calls or SMS**. Note your original network type before changing it so you can restore it later.
 
-## Languages
-
-- Spanish (default)
-- English
-
 ## Build
 
-```bash
-./gradlew assembleDebug
-```
-
-APK at `app/build/outputs/apk/debug/app-debug.apk`.
-
-### Release
-
-```bash
-./gradlew assembleRelease
-```
-
-Requires signing config in `app/build.gradle.kts` or manual signing with `apksigner`.
-
-## Requirements
-
-- Android Studio or JDK 17+
-- Android SDK 35 (compileSdk)
-- minSdk 16 (Android 4.1+)
-- Zero permissions required
+See the [Makefile](Makefile) for build, version management, and release commands.
 
 ## Compatibility
 
-Not all phones allow opening the radio menu. Some manufacturers block access. If it doesn't work, the app shows a message indicating so.
+Not all phones allow opening the radio menu. Some manufacturers block access. If the main button doesn't work, the app provides the manual dial code `*#*#4636#*#*` as a fallback.
