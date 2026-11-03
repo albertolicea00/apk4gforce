@@ -5,6 +5,8 @@ import android.content.ComponentName
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +26,21 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.btn_info).setOnClickListener {
             startActivity(Intent(this, InfoActivity::class.java))
+        }
+
+        val modesContent = findViewById<LinearLayout>(R.id.modes_content)
+        val modesArrow = findViewById<TextView>(R.id.modes_arrow)
+        val modesHint = findViewById<TextView>(R.id.modes_hint)
+        findViewById<View>(R.id.btn_modes_header).setOnClickListener {
+            if (modesContent.visibility == View.GONE) {
+                modesContent.visibility = View.VISIBLE
+                modesArrow.text = "▾"
+                modesHint.setText(R.string.modes_collapse)
+            } else {
+                modesContent.visibility = View.GONE
+                modesArrow.text = "▸"
+                modesHint.setText(R.string.modes_expand)
+            }
         }
 
         findViewById<MaterialButton>(R.id.txt_dial_code).setOnClickListener {

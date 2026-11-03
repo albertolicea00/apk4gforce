@@ -16,6 +16,18 @@
     <string name="warning_note">Anota el tipo de red actual antes de cambiarlo. Suele aparecer como <i>\"LTE/TD-SCDMA/UMTS\"</i> o <i>\"LTE/TD-SCDMA/WCDMA\"</i>. Lo necesitarás para volver a la normalidad.</string>
     <string name="warning_restore">Para restaurar, vuelve a este menú y selecciona el tipo de red original que anotaste.</string>
 
+    <string name="section_modes">Modos de red</string>
+    <string name="modes_expand">Toca para expandir</string>
+    <string name="modes_collapse">Toca para contraer</string>
+    <string name="mode_auto">•  <b>LTE/WCDMA/GSM (auto)</b>\nModo automático completo. El teléfono elige la mejor red disponible. Prioriza LTE, luego 3G, luego 2G. Es el modo por defecto.</string>
+    <string name="mode_lte_wcdma">•  <b>LTE/WCDMA</b>\nSolo 4G y 3G. El teléfono nunca baja a 2G.</string>
+    <string name="mode_lte_only">•  <b>LTE Only</b>\nSolo 4G. El teléfono <b>solo</b> se conecta a LTE. No usa 3G ni 2G bajo ninguna circunstancia.</string>
+    <string name="mode_wcdma_gsm">•  <b>WCDMA/GSM (auto)</b>\nSolo 3G y 2G. No usa LTE. Útil si el 4G tiene problemas en tu zona.</string>
+    <string name="mode_wcdma_only">•  <b>WCDMA Only</b>\nSolo 3G. Solo usa UMTS/HSPA. No usa LTE ni 2G.</string>
+    <string name="mode_gsm_only">•  <b>GSM Only</b>\nSolo 2G. Solo usa GSM/EDGE. Velocidades muy bajas pero máxima cobertura y ahorro de batería.</string>
+    <string name="mode_lte_td">•  <b>LTE/TD-SCDMA/UMTS</b>\n4G/3G con soporte TD-SCDMA. Común en teléfonos vendidos en China.</string>
+    <string name="mode_lte_td_all">•  <b>LTE/TD-SCDMA/WCDMA/GSM</b>\nModo automático que incluye todas las tecnologías, incluido TD-SCDMA.</string>
+
     <string name="section_compat">Compatibilidad</string>
     <string name="compat_text">No todos los teléfonos permiten abrir este menú. Si el botón no funciona, abre la app de <b>Teléfono</b> y marca manualmente este código:</string>
     <string name="dial_code">*#*#4636#*#*</string>
