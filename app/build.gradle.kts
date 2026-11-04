@@ -6,12 +6,15 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-val releaseProps = Properties().apply {
-    val propertiesFile = rootProject.file("keys/release.properties")
+fun signingProperties(name: String) = Properties().apply {
+    val propertiesFile = rootProject.file("keys/$name.properties")
     if (propertiesFile.exists()) {
         propertiesFile.inputStream().use { load(it) }
     }
 }
+
+val releaseProps = signingProperties("release")
+val apklistProps = signingProperties("apklist")
 
 android {
     namespace = "com.albertolicea00.force4g"
@@ -26,6 +29,12 @@ android {
     }
 
     signingConfigs {
+        create("apklist") {
+            storeFile = rootProject.file("keys/apklist.jks")
+            storePassword = apklistProps.getProperty("storePassword")
+            keyAlias = apklistProps.getProperty("keyAlias", "albertolicea00")
+            keyPassword = apklistProps.getProperty("keyPassword")
+        }
         create("release") {
             storeFile = rootProject.file("keys/release.jks")
             storePassword = releaseProps.getProperty("storePassword")
@@ -41,6 +50,11 @@ android {
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
         }
+        create("apklist") {
+            initWith(getByName("release"))
+            signingConfig = signingConfigs.getByName("apklist")
+            matchingFallbacks += "release"
+        }
     }
 
     compileOptions {
@@ -53,8 +67,8 @@ android {
     }
 
     applicationVariants.all {
-        if (buildType.name == "release") {
-            val apkName = "4gforce-v${versionName}-release.apk"
+        if (buildType.name == "release" || buildType.name == "apklist") {
+            val apkName = "4gforce-v${versionName}-${buildType.name}.apk"
             outputs.all {
                 (this as BaseVariantOutputImpl).outputFileName = apkName
             }

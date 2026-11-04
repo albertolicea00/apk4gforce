@@ -11,12 +11,17 @@
 #   In .properties values, write literal backslashes as \\ (Java escape syntax).
 #   Both files are ignored by Git. Back up the keystore; future updates must
 #   use the same signing key.
+#   Apklis builds use keys/apklist.jks and keys/apklist.properties with the
+#   same property names. Both channels keep the same application ID.
+#   Switching channels requires uninstalling when their signing keys differ.
 #
 # Release output:
 #   make release generates:
 #     app/build/outputs/apk/release/4gforce-v<versionName>-release.apk
 #     app/build/outputs/apk/release/4gforce-v<versionName>-release.apk.sha256
 #   Gradle and Android Studio also use this APK name when building a release.
+#   make apklist generates a separately signed APK and checksum in:
+#     app/build/outputs/apk/apklist/4gforce-v<versionName>-apklist.apk
 #
 # Manual Release Workflow:
 # ------------------------
@@ -54,8 +59,9 @@ PATCH := $(word 3,$(subst ., ,$(VERSION_NAME)))
 
 APK_DEBUG   := app/build/outputs/apk/debug/app-debug.apk
 APK_RELEASE := app/build/outputs/apk/release/4gforce-v$(VERSION_NAME)-release.apk
+APK_APKLIST := app/build/outputs/apk/apklist/4gforce-v$(VERSION_NAME)-apklist.apk
 
-.PHONY: help version build release clean bump-patch bump-minor bump-major
+.PHONY: help version build release apklist clean bump-patch bump-minor bump-major
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
@@ -71,6 +77,11 @@ release: ## Build signed release APK and SHA-256 checksum
 	./gradlew assembleRelease
 	cd "$(dir $(APK_RELEASE))" && shasum -a 256 "$(notdir $(APK_RELEASE))" > "$(notdir $(APK_RELEASE)).sha256"
 	@echo "Release APK: $(APK_RELEASE)"
+
+apklist: ## Build APK signed for Apklis and SHA-256 checksum
+	./gradlew assembleApklist
+	cd "$(dir $(APK_APKLIST))" && shasum -a 256 "$(notdir $(APK_APKLIST))" > "$(notdir $(APK_APKLIST)).sha256"
+	@echo "Apklis APK: $(APK_APKLIST)"
 
 clean: ## Clean build artifacts
 	./gradlew clean
