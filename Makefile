@@ -8,6 +8,7 @@
 #     storePassword=your-store-password
 #     keyAlias=albertolicea00
 #     keyPassword=your-key-password
+#   In .properties values, write literal backslashes as \\ (Java escape syntax).
 #   Both files are ignored by Git. Back up the keystore; future updates must
 #   use the same signing key.
 #
@@ -15,7 +16,7 @@
 #   make release generates:
 #     app/build/outputs/apk/release/4gforce-v<versionName>-release.apk
 #     app/build/outputs/apk/release/4gforce-v<versionName>-release.apk.sha256
-#   ./gradlew assembleRelease generates the signed app-release.apk in that folder.
+#   Gradle and Android Studio also use this APK name when building a release.
 #
 # Manual Release Workflow:
 # ------------------------
@@ -52,8 +53,7 @@ MINOR := $(word 2,$(subst ., ,$(VERSION_NAME)))
 PATCH := $(word 3,$(subst ., ,$(VERSION_NAME)))
 
 APK_DEBUG   := app/build/outputs/apk/debug/app-debug.apk
-APK_RELEASE := app/build/outputs/apk/release/app-release.apk
-APK_RENAMED := app/build/outputs/apk/release/4gforce-v$(VERSION_NAME)-release.apk
+APK_RELEASE := app/build/outputs/apk/release/4gforce-v$(VERSION_NAME)-release.apk
 
 .PHONY: help version build release clean bump-patch bump-minor bump-major
 
@@ -69,9 +69,8 @@ build: ## Build debug APK
 
 release: ## Build signed release APK and SHA-256 checksum
 	./gradlew assembleRelease
-	cp "$(APK_RELEASE)" "$(APK_RENAMED)"
-	cd "$(dir $(APK_RENAMED))" && shasum -a 256 "$(notdir $(APK_RENAMED))" > "$(notdir $(APK_RENAMED)).sha256"
-	@echo "Release APK: $(APK_RENAMED)"
+	cd "$(dir $(APK_RELEASE))" && shasum -a 256 "$(notdir $(APK_RELEASE))" > "$(notdir $(APK_RELEASE)).sha256"
+	@echo "Release APK: $(APK_RELEASE)"
 
 clean: ## Clean build artifacts
 	./gradlew clean

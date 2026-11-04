@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import java.util.Properties
 
 plugins {
@@ -49,6 +50,15 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    applicationVariants.all {
+        if (buildType.name == "release") {
+            val apkName = "4gforce-v${versionName}-release.apk"
+            outputs.all {
+                (this as BaseVariantOutputImpl).outputFileName = apkName
+            }
+        }
     }
 }
 
