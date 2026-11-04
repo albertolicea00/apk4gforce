@@ -4,6 +4,7 @@
 .kotlin/
 /build/
 /app/build/
+/app/release/
 /captures/
 .externalNativeBuild/
 .cxx/
@@ -38,6 +39,7 @@ $RECYCLE.BIN/
 .Trash-*
 
 # Signing keys
+/keys/release.properties
 *.jks
 *.keystore
 !app/debug.keystore

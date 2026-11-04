@@ -2,6 +2,21 @@
 # 4GForce :: Version Management & Release
 # ==============================================================================
 #
+# Signing setup:
+#   Place the signing keystore at keys/release.jks.
+#   Copy keys/release.properties.example to keys/release.properties and set:
+#     storePassword=your-store-password
+#     keyAlias=albertolicea00
+#     keyPassword=your-key-password
+#   Both files are ignored by Git. Back up the keystore; future updates must
+#   use the same signing key.
+#
+# Release output:
+#   make release generates:
+#     app/build/outputs/apk/release/4gforce-v<versionName>-release.apk
+#     app/build/outputs/apk/release/4gforce-v<versionName>-release.apk.sha256
+#   ./gradlew assembleRelease generates the signed app-release.apk in that folder.
+#
 # Manual Release Workflow:
 # ------------------------
 # 1. Update version:
@@ -23,6 +38,7 @@
 # 5. Publish Release on GitHub:
 #      gh release create "v$(VERSION_NAME)" \
 #          app/build/outputs/apk/release/4gforce-v$(VERSION_NAME)-release.apk \
+#          app/build/outputs/apk/release/4gforce-v$(VERSION_NAME)-release.apk.sha256 \
 #          --title "v$(VERSION_NAME)" --notes "..."
 # ==============================================================================
 
@@ -36,7 +52,7 @@ MINOR := $(word 2,$(subst ., ,$(VERSION_NAME)))
 PATCH := $(word 3,$(subst ., ,$(VERSION_NAME)))
 
 APK_DEBUG   := app/build/outputs/apk/debug/app-debug.apk
-APK_RELEASE := app/build/outputs/apk/release/app-release-unsigned.apk
+APK_RELEASE := app/build/outputs/apk/release/app-release.apk
 APK_RENAMED := app/build/outputs/apk/release/4gforce-v$(VERSION_NAME)-release.apk
 
 .PHONY: help version build release clean bump-patch bump-minor bump-major
@@ -51,15 +67,11 @@ build: ## Build debug APK
 	./gradlew assembleDebug
 	@echo "Debug APK: $(APK_DEBUG)"
 
-release: ## Build release APK
+release: ## Build signed release APK and SHA-256 checksum
 	./gradlew assembleRelease
-	@if [ -f "$(APK_RELEASE)" ]; then \
-		cp "$(APK_RELEASE)" "$(APK_RENAMED)"; \
-		echo "Release APK: $(APK_RENAMED)"; \
-	else \
-		echo "Release APK: app/build/outputs/apk/release/"; \
-		ls app/build/outputs/apk/release/ 2>/dev/null; \
-	fi
+	cp "$(APK_RELEASE)" "$(APK_RENAMED)"
+	cd "$(dir $(APK_RENAMED))" && shasum -a 256 "$(notdir $(APK_RENAMED))" > "$(notdir $(APK_RENAMED)).sha256"
+	@echo "Release APK: $(APK_RENAMED)"
 
 clean: ## Clean build artifacts
 	./gradlew clean
